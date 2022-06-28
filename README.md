@@ -18,6 +18,15 @@
 ![friends](https://user-images.githubusercontent.com/55477835/176158630-17a329cd-53b5-4101-8809-c1a3380166f8.png)
 
 
+## 커밋메시지 컨벤션
+
+- feat/ : 새로운 기능 추가/수정/삭제
+- enhan/ : 기존 코드에 기능을 추가하거나 기능을 강화할 때
+- refac/ : 코드 리팩토링,버그 수정
+- test/ : 테스트 코드/기능 추가
+- edit/ : 파일을 수정한 경우(파일위치변경, 파일이름 변경, 삭제)
+
+
 ## API 명세서
 
 https://www.notion.so/6414be4678e545659a2351b77b1c8aa9?v=99b8a6dae19d41c4b8df9e63a81213f0
