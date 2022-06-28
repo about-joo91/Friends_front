@@ -10,10 +10,13 @@
 
 ## 목업
 
-![mockup](https://user-images.githubusercontent.com/55477835/176152854-04666c7e-513a-4e79-8771-24c1fab62283.png)
+![mockup](https://user-images.githubusercontent.com/55477835/176158609-df8279dd-cdbd-4edf-a7a5-152c37e51103.png)
+
 
 ## ERD
-![friends](https://user-images.githubusercontent.com/55477835/176152906-d9ca943f-13a6-4b76-8eaf-ade4878ec8d0.png)
+
+![friends](https://user-images.githubusercontent.com/55477835/176158630-17a329cd-53b5-4101-8809-c1a3380166f8.png)
+
 
 ## API 명세서
 
