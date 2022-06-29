@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/jintest/modal.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class = "modal_main_container">
+        <div class ="modal_sub_container">
+            <div id="preview"class="modal">
+                <div id="img_preview">
+                </div>
+            </div>
+            <div class = "modal_buttonbox">
+                <label class="input-file-button"for="image_input">파 일 선 택</label>
+                <input class ="fake_input" id="image_input" type="file" accept='image/*' onchange="setThumbnail(event);"/>
+                <button class="up_button" id="upload_button"><span>업 로 드</span></button>
+                <button class="back_button" id="clear"><span>취 소 </span></button>
+            </div>
+            <div class="modal_line">
+                <div class="modal2">
+                    <div class="modal_title">
+                        <input class="title" type="text" id="title" placeholder="제목을 입력해주세요.">
+                        <textarea class="content" id="content" placeholder="내용을 입력해주세요."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="/jintest/modal.js"></script>
+</html>
