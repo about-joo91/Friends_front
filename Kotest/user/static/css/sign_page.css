@@ -1,0 +1,48 @@
+html {
+    font-size: 62.5%;
+    width: 172.8rem;
+    margin: 0 auto;
+}
+
+
+.join_header{
+    width: 141.3rem;
+    height: 16.1rem;
+    border: 1px solid black;
+    margin : 20.4rem auto 0 auto;
+}
+.join_body{
+    width: 131.6rem;
+    height: 57.9rem;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4.55rem auto;
+}
+.jb_sign_in{
+    width: 52.3rem;
+    height: 50.1rem;
+    border: 1px solid black;
+}
+
+.empty_box{
+    width: 27.2rem;
+    height: 100%;
+    display: flex;
+}
+.eb_line_right{
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid black;
+}
+.eb_line_left{
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid black;
+}
+.jb_sign_up{
+    width: 52.1rem;
+    height: 50.1rem;
+    border: 1px solid black;
+}
