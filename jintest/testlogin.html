@@ -12,6 +12,9 @@
     <button type="submit" onclick="login()">로그인</button>
     <script>
     const BASE_URL = 'http://127.0.0.1:8000/joo_test/api/token/';
+
+
+
     function get_cookie(name) {
     let cookie_value = null;
     if (document.cookie && document.cookie !== '') {
@@ -27,6 +30,7 @@
     }
     return cookie_value;
 }
+
 const csrftoken = get_cookie('csrftoken')
 
 async function login() {

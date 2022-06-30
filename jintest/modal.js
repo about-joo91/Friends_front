@@ -29,7 +29,6 @@ async function post_upload() {
     formData.append('content', content);
 
 
-
     if (title && content && selectFile) {
         const token = localStorage.getItem('access')
         const result = await fetch(BASE_URL + '/joo_test/', {
@@ -44,22 +43,27 @@ async function post_upload() {
                 'X-CSRFToken': csrftoken,
             },
             body: formData,
-        }).then(res => {
-            if (res.ok) {
-                location.reload()
-            }
-        }).catch(error => {
-            alert(error)
         })
+        let res = result.json()
+        if (result.ok){
+            alert("업로드 성공입니다!")
+            console.log(res.body)
+            console.log(res)
+            console.log(res.date)
+            // location.reload()   
+        }
+        else{
+            alert(res['messge'])
+        }
+
+        
     } else {
         alert("제목과 내용을 입력해주세요.")
     }
 }
 
 
-document.querySelector(".fake_input").addEventListener('click',()=>{
-    $('#img_preview').empty();
-})
+
 
 
 function setThumbnail(event) {
@@ -70,7 +74,16 @@ function setThumbnail(event) {
     img.setAttribute("src", event.target.result);
     document.querySelector("div#img_preview").appendChild(img);
     };
+    $('#img_preview').empty();
     reader.readAsDataURL(event.target.files[0])
 
     
 }
+
+document.querySelector(".title_button").addEventListener('click',()=>{
+    document.getElementById('title').focus();
+})
+
+document.querySelector(".content_button").addEventListener('click',()=>{
+    document.getElementById('content').focus();
+})

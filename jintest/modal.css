@@ -16,7 +16,7 @@ body{
 
 .modal_sub_container{
     margin-top: 190px;
-    background-color: rgba(243, 82, 82, 0.6);
+    background-color: rgb(210, 206, 243);
     margin-bottom: 200px;
     width: 70%;
     height: 1000px;
@@ -46,13 +46,9 @@ body{
     background-color: #FFFFFF;
 }
 
-.modal_buttonbox button:hover {
-    background: rgba(243, 82, 82);
-    color: white;
-}
 
 .input-file-button:hover {
-    background: rgba(243, 82, 82);
+    background: rgb(199, 199, 245);
     color: white;
 }
 
@@ -66,9 +62,10 @@ body{
     
 }
 .input-file-button {
-    background-color: #FFFFFF;
+    background-color: white;
+    border: solid black;
     position: absolute;
-    top: 37%;
+    top: 30%;
     padding-top: 15px;
     width: 200px;
     height: 38px;
@@ -78,21 +75,28 @@ body{
     align-items: center;
     font-size: 20px;
     font-weight: bold;
-    transform: rotate(5deg);
-    left: 43.5%;
+    left: 44.5%;
+    color: black;
 }
 
 .up_button {
-    transform: rotate(-5deg);
     position: absolute;
-    top: 44%;
-    left: 50%;
+    border: solid black!important;
+    width: 200px;
+    height: 60px!important;
+    top: 54%;
+    background-color: white!important;
+    left: 44%;
+    color: black;
 }
 .back_button{
-    transform: rotate(5deg);
+    border: solid black!important;
     position: absolute;
-    top: 54%;
-    left: 43%;
+    top: 61%;
+    left: 49%;
+    width: 200px;
+    height: 60px!important;
+
 }
 .modal {
     background-color: #FFFFFF;
@@ -144,4 +148,73 @@ body{
     border-radius: 5px;
     padding-top: 40px
     
+}
+
+.char_choice {
+    position: absolute;
+    background-color: white;
+    border: solid black!important;
+    outline: none;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    font-size: 20px;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    top: 37%;
+    left: 49%;
+    color: black;
+}
+.char_choice:hover {
+    background: rgb(199, 199, 245);
+    color: white;
+}
+.char_choice option:hover {
+    background: rgb(199, 199, 245);
+    color: white;
+}
+.modal_buttonbox button:hover {
+    background: rgb(199, 199, 245)!important;
+    color: white;
+}
+
+.title_button {
+    background-color: white!important;
+    border: solid black!important;
+    position: absolute;
+    outline: none;
+    width: 200px;
+    height: 60px!important;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    top: 40%;
+    left: 43.5%;
+    color: black;
+}
+
+.content_button {
+    background-color: white!important;
+    border: solid black!important;
+    position: absolute;
+    outline: none;
+    width: 200px;
+    height: 60px!important;
+    text-align: center;
+    font-size: 20px;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    top: 47%;
+    left: 49%;
+    color: black;
+}
+
+.piano{
+    background-color: rgb(46, 45, 45);
+    width: 400px;
+    height: 600px;
+    border-radius: 10px;
 }

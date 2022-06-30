@@ -17,9 +17,13 @@
                 </div>
             </div>
             <div class = "modal_buttonbox">
-                <label class="input-file-button"for="image_input">파 일 선 택</label>
+                <div class="piano"></div>>
+                <label class="input-file-button"for="image_input">1. 파 일 선 택</label>
                 <input class ="fake_input" id="image_input" type="file" accept='image/*' onchange="setThumbnail(event);"/>
-                <button onclick="post_upload()" class="up_button" id="upload_button"><span>업 로 드</span></button>
+                <select class="char_choice"><option>2. 캐 릭 터 선택</option><option>엘사</option><option>라이언</option><option>주맨</option></select>
+                <button class="title_button" id="title_button"><span>3. 제 목 입 력 </span> </button>
+                <button class="content_button" id="content_button"><span>4. 내 용 입 력 </span> </button>
+                <button onclick="post_upload()" class="up_button" id="upload_button"><span>5. 업 로 드</span></button>
                 <button class="back_button" id="clear"><span>취 소 </span></button>
             </div>
             <div class="modal_line">
