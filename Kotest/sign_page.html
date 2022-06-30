@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sign_page.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+    <div class="join_header">
+    </div>
+    <div class="join_body">
+        <div class="jb_sign_in">
+            <div class="jb_si_title">로그인</div>
+            <div class="jb_si_username">
+                <div class="jb_si_un_text">아이디</div>
+                <input type="text" class="jb_si_un_inputusername" id="inputUsername" placeholder="username">
+            </div>
+            <div class="jb_si_password">
+                <div class="jb_si_pw_text">비밀번호</div>
+                <input type="password" class="jb_si_pw_inputpassword" id="inputPassword" placeholder = "password">
+            </div>
+            <div class="jb_si_button">
+                <button class="sign_in_button" id="sign_in_btn" onclick="sign_in()">로그인</button>
+            </div>
+        </div>
+        <biv class="empty_box">
+            <div class="eb_line_right"></div>
+            <div class="eb_line_left"></div>
+        </biv>
+        <div class="jb_sign_up">
+            <div class="jb_su_title">회원가입</div>
+            <div class="jb_su_username">
+                <div class="jb_su_un_text">아이디</div>
+                <input type="text" class="jb_su_un_new_username" id="new_Username" placeholder="username">
+            </div>
+            <div class="jb_su_password">
+                <div class="jb_su_pw_text">비밀번호</div>
+                <input type="password" class="jb_su_pw_new_password" id="new_Password" placeholder = "password">
+            </div>
+            <div class="jb_su_nickname">
+                <div class="jb_su_un_text">닉네임</div>
+                <input type="text" class="jb_su_un_new_nickname" id="new_Nickname" placeholder="nickname">
+            </div>
+            <div class="jb_su_button">
+                <button class="sign_up_button" id="sign_up_btn" onclick="sign_up()">회원가입</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="sign_page.js"></script>
+</html>
