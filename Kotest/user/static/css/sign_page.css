@@ -9,23 +9,85 @@ html {
     width: 141.3rem;
     height: 16.1rem;
     border: 1px solid black;
-    margin : 20.4rem auto 0 auto;
+    margin : 10.4rem auto 0 auto;
+    background-color: #D9D9D9;
 }
 .join_body{
     width: 131.6rem;
     height: 57.9rem;
-    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 4.55rem auto;
 }
+/* 왼쪽 로그인 창 */
 .jb_sign_in{
     width: 52.3rem;
     height: 50.1rem;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.jb_si_title{
+    width: 100%;
+    height: 4.1rem;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+}
+.jb_si_username{
+    width: 52.1rem;
+    height: 10.6rem;
+}
+.jb_si_un_text{
+    width: 100%;
+    height: 3.5rem;
+    margin-left: 1rem;
+    font-size: 20px;
+    padding-left: 2rem;
+}
+.jb_si_un_inputusername{
+    width: 50.1rem;
+    padding-left: 2rem;
+    height: 7.1rem;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    font-size: 20px;
+}
+.jb_si_password{
+    width: 52.1rem;
+    height: 10.6rem;   
+}
+.jb_si_pw_text{
+    width: 12.8rem;
+    height: 2.4rem;
+    margin-left: 1rem;
+    font-size: 20px;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+.jb_si_pw_inputpassword{
+    width: 50.1rem;
+    padding-left: 2rem;
+    height: 7.1rem;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    font-size: 20px;
+}
+.jb_si_button{
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+}
+.sign_in_button{
+    width: 22.5rem;
+    height: 4.5rem;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: #D9D9D9;
+}
+/* 중간에 세로라인 */
 .empty_box{
     width: 27.2rem;
     height: 100%;
@@ -41,8 +103,90 @@ html {
     height: 100%;
     border-left: 1px solid black;
 }
+/* 오른쪽 회원가입 창 */
 .jb_sign_up{
-    width: 52.1rem;
+    width: 52.3rem;
     height: 50.1rem;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.jb_su_title{
+    width: 100%;
+    height: 4.1rem;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+}
+.jb_su_username{
+    width: 52.1rem;
+    height: 10.6rem;
+    font-size: 20px;
+}
+.jb_su_un_text{
+    width: 100%;
+    height: 3.5rem;
+    margin-left: 1rem;
+    padding-left: 2rem;
+    font-size: 20px;
+}
+.jb_su_un_new_username{
+    width: 50.1rem;
+    padding-left: 2rem;
+    height: 7.1rem;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    font-size: 20px;
+}
+.jb_su_password{
+    width: 52.1rem;
+    height: 10.6rem;   
+}
+.jb_su_pw_text{
+    width: 12.8rem;
+    height: 2.4rem;
+    margin-left: 1rem;
+    font-size: 20px;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+.jb_su_pw_new_password{
+    width: 50.1rem;
+    padding-left: 2rem;
+    height: 7.1rem;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    font-size: 20px;
+}
+.jb_su_nickname{
+    width: 52.1rem;
+    height: 10.6rem;
+}
+.jb_su_un_text{
+    width: 100%;
+    height: 3.5rem;
+    margin-left: 1rem;
+    font-size: 20px;
+    padding-left: 2rem;
+}
+.jb_su_un_new_nickname{
+    width: 50.1rem;
+    padding-left: 2rem;
+    height: 7.1rem;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    font-size: 20px;
+}
+.jb_su_button{
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+}
+.sign_up_button{
+    width: 22.5rem;
+    height: 4.5rem;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: #D9D9D9;
 }
