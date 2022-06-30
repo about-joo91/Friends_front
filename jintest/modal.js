@@ -53,13 +53,12 @@ async function post_upload() {
     }
 }
 
-var privew = function(event) {
-    var input = event.target;
-
-    var reader = new FileReader();
+let privew = function(event) {
+    let input = event.target;
+    let reader = new FileReader();
     reader.onload = function(){
-    var dataURL = reader.result;
-    var output = document.getElementById('out_put');
+    let dataURL = reader.result;
+    let output = document.getElementById('out_put');
     output.src = dataURL;
     };
     reader.readAsDataURL(input.files[0]);
