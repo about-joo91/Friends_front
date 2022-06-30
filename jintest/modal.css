@@ -2,9 +2,6 @@ body{
     margin: 0;
     overflow: hidden;
 }
-/* .all_modal{
-    display: none;
-} */
 
 .modal_main_container {
     width: 100%;
@@ -14,7 +11,7 @@ body{
     align-items: center;
 }
 
-.modal_sub_container{
+.mc_container{
     margin-top: 190px;
     background-color: rgb(210, 206, 243);
     margin-bottom: 200px;
@@ -47,7 +44,7 @@ body{
 }
 
 
-.input-file-button:hover {
+.mb_file_select:hover {
     background: rgb(199, 199, 245);
     color: white;
 }
@@ -57,11 +54,11 @@ body{
     font-weight: bold;
 }
 
-.fake_input{
+.mb_file_input{
     visibility: hidden;
     
 }
-.input-file-button {
+.mb_file_select {
     background-color: white;
     border: solid black;
     position: absolute;
@@ -79,7 +76,7 @@ body{
     color: black;
 }
 
-.up_button {
+.mb_up_button {
     position: absolute;
     border: solid black!important;
     width: 200px;
@@ -89,7 +86,7 @@ body{
     left: 44%;
     color: black;
 }
-.back_button{
+.mb_back_button{
     border: solid black!important;
     position: absolute;
     top: 61%;
@@ -98,7 +95,7 @@ body{
     height: 60px!important;
 
 }
-.modal {
+.mc_modal {
     background-color: #FFFFFF;
     background-position: cover;
     width: 500px;
@@ -107,12 +104,12 @@ body{
 
 
 
-.modal img {
+.mc_modal img {
     background-position: center;
     width: 500px;
     height: 500px;
 }
-.modal2 {
+.ml_modal {
     margin-bottom: 80px;
     background-color: #FFFFFF;
     background-image: url(/jintest//event.jpg);
@@ -122,7 +119,7 @@ body{
     height: 500px;
 }
 
-.title {
+.ml_title {
     border: none;
     outline: none;
     position: absolute;
@@ -135,7 +132,7 @@ body{
     font-size: 18px;
     padding-top: 5px;
 }
-.content {
+.ml_content {
     border: none;
     outline: none;
     position: absolute;
@@ -150,7 +147,7 @@ body{
     
 }
 
-.char_choice {
+.mb_char_choice {
     position: absolute;
     background-color: white;
     border: solid black!important;
@@ -166,11 +163,11 @@ body{
     left: 49%;
     color: black;
 }
-.char_choice:hover {
+.mb_char_choice:hover {
     background: rgb(199, 199, 245);
     color: white;
 }
-.char_choice option:hover {
+.mb_char_choice option:hover {
     background: rgb(199, 199, 245);
     color: white;
 }
@@ -179,7 +176,7 @@ body{
     color: white;
 }
 
-.title_button {
+.mb_title_button {
     background-color: white!important;
     border: solid black!important;
     position: absolute;
@@ -195,7 +192,7 @@ body{
     color: black;
 }
 
-.content_button {
+.mb_content_button {
     background-color: white!important;
     border: solid black!important;
     position: absolute;
@@ -212,7 +209,7 @@ body{
     color: black;
 }
 
-.piano{
+.mb_container{
     background-color: rgb(46, 45, 45);
     width: 400px;
     height: 600px;
