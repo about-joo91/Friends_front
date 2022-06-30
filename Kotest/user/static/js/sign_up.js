@@ -7,7 +7,7 @@ async function sign_up() {
     const userNickname = document.getElementById('inputNickname').value;
 
     if (username) {
-        fetch(BASE_URL + '/user/', {
+        const result = await fetch(BASE_URL + '/user/', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -21,13 +21,14 @@ async function sign_up() {
                 "password": userPassword,
                 "nickname": userNickname,
             })
-        }).then(res => {
-            if (res.ok) {
-                location.replace('/user/templates/sign_in.html')
-            }
-        }).catch(error => {
-            alert(error)
         })
+        let res = result.json()
+        if (result.ok){
+            location.replace('/Kotest/user/templates/sign_in.html')
+        }
+        else {
+            alert(res['message'])
+        }
     } else {
         alert("모든 값을 입력하셔야 합니다.")
     }
