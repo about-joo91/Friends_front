@@ -1,28 +1,74 @@
-document.querySelector("#upload_button").addEventListener('click',()=>{
-    let selectFile = document.querySelector("#image_input").files[0];
-    let title =document.getElementById("title").value
-    let content =document.getElementById("content").value
-    if (title | content == "") {
-        alert('제목 또는 내용을 입력해주세요.'); 
+const BASE_URL = 'http://127.0.0.1:8000';
+
+function get_cookie(name) {
+    let cookie_value = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookie_value = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
-    else{
-        alert("작성성공!")
+    return cookie_value;
+}
+
+const csrftoken = get_cookie('csrftoken')
+async function post_upload() {
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    const selectFile = document.getElementById("image_input").files[0];
+    let formData = new FormData();
+    formData.append('postimg', selectFile);
+    formData.append('title', title);
+    formData.append('content', content);
+
+
+    if (title && content && selectFile) {
+        const token = localStorage.getItem('access')
+        const result = await fetch(BASE_URL + '/joo_test/', {
+            method: 'POST',
+            cache: 'no-cache',
+            mode: 'cors',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+                'X-CSRFToken': csrftoken,
+            },
+            body: formData,
+        })
+        let res = result.json()
+        if (result.ok){
+            alert("업로드 성공입니다!")
+            location.reload()   
+        }
+        else{
+            alert(res['messge'])
+        }
+        
+    } else {
+        alert("제목과 내용을 입력해주세요.")
+    }
+}
+
+let privew = function(event) {
+    let input = event.target;
+    let reader = new FileReader();
+    reader.onload = function(){
+    let dataURL = reader.result;
+    let output = document.getElementById('out_put');
+    output.src = dataURL;
     };
+    reader.readAsDataURL(input.files[0]);
+};
 
 
-});
-
-document.querySelector(".fake_input").addEventListener('click',()=>{
-    $('#img_preview').empty()
+document.getElementById("title_button").addEventListener('click',()=>{
+    document.getElementById('title').focus();
 })
 
-
-function setThumbnail(event) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-    var img = document.createElement("img");
-    img.setAttribute("src", event.target.result);
-    document.querySelector("div#img_preview").appendChild(img);
-    };
-    reader.readAsDataURL(event.target.files[0]);
-}
+document.getElementById("content_button").addEventListener('click',()=>{
+    document.getElementById('content').focus();
+})
