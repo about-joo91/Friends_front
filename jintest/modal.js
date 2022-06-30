@@ -29,7 +29,6 @@ async function post_upload() {
     formData.append('content', content);
 
 
-// #form data 넘기고, 넘긴값을 s3 올리는 url 값을 db에 저장하는 방식으로.
 
     if (title && content && selectFile) {
         const token = localStorage.getItem('access')
@@ -59,16 +58,19 @@ async function post_upload() {
 
 
 document.querySelector(".fake_input").addEventListener('click',()=>{
-    $('#img_preview').empty()
+    $('#img_preview').empty();
 })
 
 
 function setThumbnail(event) {
+
     var reader = new FileReader();
     reader.onload = function(event) {
     var img = document.createElement("img");
     img.setAttribute("src", event.target.result);
     document.querySelector("div#img_preview").appendChild(img);
     };
-    reader.readAsDataURL(event.target.files[0]);
+    reader.readAsDataURL(event.target.files[0])
+
+    
 }
