@@ -40,14 +40,17 @@ async function post_upload() {
             body: formData,
         })
         let res = result.json()
+        .then(date=>{
+            let event = document.getElementById("event_div")
+            event.innerHTML = `<img src="https://bucketfriends.s3.ap-northeast-2.amazonaws.com/${date}"/>`;
+        })
         if (result.ok){
             alert("업로드 성공입니다!")
-            location.reload()   
         }
         else{
             alert(res['messge'])
         }
-        
+
     } else {
         alert("제목과 내용을 입력해주세요.")
     }

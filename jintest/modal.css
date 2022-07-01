@@ -12,6 +12,7 @@ body{
 }
 
 .mc_container{
+    border-radius: 20px;
     margin-top: 190px;
     background-color: rgb(210, 206, 243);
     margin-bottom: 200px;
@@ -112,7 +113,6 @@ body{
 .ml_modal {
     margin-bottom: 80px;
     background-color: #FFFFFF;
-    background-image: url(/jintest//event.jpg);
     background-size: 500px;
     background-position: center;
     width: 500px;
