@@ -21,7 +21,7 @@ async function sign_in() {
     const username = document.getElementById('inputUsername').value;
     const password = document.getElementById('inputPassword').value;
     if (username && password) {
-        const result = await fetch(BASE_URL + '/user/api/token/', {
+        const result = await fetch(BASE_URL + '/user/login/', {
             method: "POST",
             mode: 'cors',
             headers: {
