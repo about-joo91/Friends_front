@@ -39,11 +39,10 @@ async function post_upload() {
             },
             body: formData,
         })
-        let res = result.json()
-        .then(date=>{
-            let event = document.getElementById("event_div")
-            event.innerHTML = `<img src="https://bucketfriends.s3.ap-northeast-2.amazonaws.com/${date}"/>`;
-        })
+        let res = await result.json()
+        let event = document.getElementById("event_div")
+            event.innerHTML = `<img src="https://bucketfriends.s3.ap-northeast-2.amazonaws.com/${res}"/>`;
+
         if (result.ok){
             alert("업로드 성공입니다!")
         }
