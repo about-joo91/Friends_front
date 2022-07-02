@@ -11,11 +11,31 @@
 </head>
 
 <body>
-
+    <div class="email_modal_wrapper">
+        <div class="email_modal">
+            <div id="em_email_from" class="em_content_box">
+                <label for="em_ef_input">From&nbsp;:&nbsp;</label>
+                <input id="em_ef_input" class="input_style" name="em_ef_input" type="text">
+            </div>
+            <div id="em_email_to" class="em_content_box">
+                <label for="em_eto_input">To&nbsp;:&nbsp;</label>
+                <input id="em_eto_input" class="input_style" name="em_et_input" type="text">
+            </div>
+            <div id="em_email_title" class="em_content_box">
+                <label for="em_eti_input">제목&nbsp;:&nbsp;</label>
+                <input id="em_eti_input" class="input_style" name="em_et_input" type="text">
+            </div>
+            <div id="em_email_content" class="em_content_box">
+                <label for="em_ec_textarea">내용:</label>
+                <textarea id="em_ec_textarea" name="em_ec_textarea" id="" cols="30" rows="10"></textarea>
+            </div>
+            <button onclick="send_email()">공유하기</button>
+        </div>
+    </div>
     <div class="main_header">
     </div>
     <div class="main_body">
-        <div class="mb_plus_btn">+</div>
+        <div class="mb_plus_btn" onclick="auth()">+</div>
         <div class="mb_left">
             <div class="mb_l_up">
                 <div>
