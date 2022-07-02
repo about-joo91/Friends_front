@@ -208,3 +208,59 @@ html {
     top: 90%;
     left: 95%
 }
+
+.mb_plus_btn:hover {
+    cursor: pointer;
+}
+
+/* 이메일 모달 */
+.email_modal_wrapper {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+}
+
+.email_modal {
+    z-index: 3;
+    padding-top: 15px;
+    font-size: 16px;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    width: 40%;
+    height: 40%;
+    background-color: rgb(240, 240, 240);
+    opacity: 0.8;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_style {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.em_content_box {
+    width: 80%;
+    margin: 0.3rem;
+}
+
+#em_ec_textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+}
