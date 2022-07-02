@@ -41,7 +41,7 @@ async function sign_in() {
             for (const key in response) {
                 localStorage.setItem(key, response[key])
             }
-            location.href = '../Kotest/test.html'
+            location.href = '../comment_test/comment.html'
         }
         else{
 
