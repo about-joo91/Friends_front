@@ -30,7 +30,7 @@ function parseJwt (token) {
 const comment_list = document.querySelector('.db_comment_box')
 window.onload = async function get_commnet() {
 
-    
+
     const result = await fetch(BASE_URL + '/comment/1', {
         method: 'GET',
         mode: 'cors',
@@ -41,7 +41,6 @@ window.onload = async function get_commnet() {
             'X-CSRFToken': csrftoken,
             'Authorization':"Bearer "+localStorage.getItem("access")
         },
-
     })
     let res = await result.json()
     if (result.status == 200){
@@ -52,10 +51,10 @@ window.onload = async function get_commnet() {
             if (parseJwt(localStorage.getItem("access")).user_id == comment.user){
                 tmp_comment += 
             `<div class="db_comment">
-                <div class="db_comment_comment">
-                ${comment.author}님의 댓글 :<br> ${comment.comment} user_id = ${comment.user} 
+                <div class="db_comment_comment" id="db_comment_comment_${comment.id}">
+                ${comment.author}님의 댓글 :<br> ${comment.comment} user_id = ${comment.user} comment_id = ${comment.id} 
                 </div>
-                <div class="db_comment_edit">
+                <div class="db_comment_edit" onclick = "edit_click(${comment.id})">
                 수정
                 </div>
                 <div class="db_comment_delete">
@@ -105,6 +104,52 @@ async function make_comment() {
         }
     } else {
         alert("댓글을 입력 해 주세요!!")
+    }
+
+}
+
+// 수정 버튼을 눌렀을 경우
+
+function edit_click(comment_id){
+    edit_html = `
+    <div class="edit_comment"> 
+        <textarea class="edit_comment" id="edit_comment_comment_${comment_id}" cols="50" rows="3"></textarea>
+        <button class="edit_comment_button" id="edit_comment_btn" onclick="edit_comment(${comment_id})">댓글 수정</button>
+    </div>
+    `
+    const edit_clicked_comment = document.getElementById("db_comment_comment_" + comment_id)
+    edit_clicked_comment.innerHTML += edit_html
+}
+
+
+// 댓글을 수정하기 위한 코드
+async function edit_comment(comment_id) {
+    const edit_comment = document.getElementById('edit_comment_comment_' + comment_id).value;
+
+    if (comment) {
+        const result = await fetch(BASE_URL + '/comment/'+ comment_id, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+                'Authorization':"Bearer "+localStorage.getItem("access")
+            },
+            body: JSON.stringify({
+                "comment" : edit_comment
+            })
+        })
+        let res = result.json()
+        if (result.status == 200){
+            location.replace('/comment.html')
+        }
+        else {
+            alert("댓글 수정이 실패했습니다!!")
+        }
+    } else {
+        alert("수정할 댓글을 입력 해 주세요!!")
     }
 
 }
