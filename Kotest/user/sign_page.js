@@ -38,6 +38,7 @@ async function sign_in() {
 
         let response = await result.json()
         if (result.status == 200){
+            alert("로그인 되었습니다!")
             for (const key in response) {
                 localStorage.setItem(key, response[key])
             }
@@ -53,12 +54,12 @@ async function sign_in() {
 }
 
 async function sign_up() {
-    const username = document.getElementById('inputUsername').value;
-    const userPassword = document.getElementById('inputPassword').value;
-    const userNickname = document.getElementById('inputNickname').value;
+    const username = document.getElementById('new_Username').value;
+    const userPassword = document.getElementById('new_Password').value;
+    const userNickname = document.getElementById('new_Nickname').value;
 
     if (username) {
-        const result = await fetch(BASE_URL + '/user/', {
+        const result = await fetch(BASE_URL + '/user/sign_up/', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -75,7 +76,8 @@ async function sign_up() {
         })
         let res = result.json()
         if (result.ok){
-            location.replace('/Kotest/user/templates/sign_in.html')
+            alert("회원가입을 축하합니다!!")
+            location.href = '../comment_test/sign_page.html'
         }
         else {
             alert(res['message'])
