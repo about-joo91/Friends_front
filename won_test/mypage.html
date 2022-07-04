@@ -20,7 +20,7 @@
     <div class="header">
         <div class="h_bear"></div>
     </div>
-    <div class="myimg-list">
+    <div class="myimg_list">
         <div class="ml_div">
             <img class="ml_same ml_1" src="">
             <img class="ml_same ml_2" src="">
@@ -59,50 +59,6 @@
       </div>
     </div>
 
-
-
-
-
-
-
-<!-- <div>
-    <ul class="comment_list_ul">
-         이전 페이지 
-        {% if comment_list.has_previous %}
-        <li>
-            <a href="?page={{ comment_list.previous_page_number }}">이전</a>
-        </li>
-        {% else %}
-        <li>
-            <a tabindex="-1" aria-disabled="true" href="#">이전</a>
-        </li>
-        {% endif %}
-
-        페이지 리스트 
-        {% for page_number in comment_list.paginator.page_range %}
-        {% if page_number == comment_list.number %}
-        <li>
-            <a href="?page={{ page_number }}">{{ page_number }}</a>
-        </li>
-        {% else %}
-        <li>
-            <a href="?page={{ page_number }}">{{ page_number }}</a>
-        </li>
-        {% endif %}
-        {% endfor %}
-
-        <!-- 다음 페이지 
-        {% if comment_list.has_next %}
-        <li>
-            <a href="?page={{ comment_list.next_page_number }}">다음</a>
-        </li>
-        {% else %}
-        <li>
-            <a tabindex="-1" aria-disabled="true" href="#">다음</a>
-        </li>
-        {% endif %}
-    </ul>
-</div> -->
 
 
 </body>
