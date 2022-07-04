@@ -1,0 +1,138 @@
+* {
+    font-family: 'Gamja Flower', cursive;
+}
+html, body {
+    margin :0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(221, 214, 203);
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+
+.h_bear{
+    position: relative;
+    top: 0;
+    width:300px;
+    height:190px;
+    background-image: url("friend.png");
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    z-index:3;
+}
+
+.myimg-list{
+    width: 97%;
+    margin-bottom: 10px;
+    background-position: center;
+    text-align: center;
+    position: absolute;
+    align-items: center; 
+    top: 100px;
+    margin: 10px auto;
+    background-color: rgb(193, 173, 173);
+    border-radius: 10px;
+    border: 3px solid;
+    
+}
+
+.ml_div{
+    margin: 70px 0 30px 0;
+} 
+
+.ml_same{
+    position: relative;
+    margin: 23px;
+    border-radius: 10px;
+}
+
+.ml_1{
+    transform: rotate(5deg);
+    width: 32rem;
+    border: 5px dashed;
+}
+
+.ml_2{
+    width: 35rem;
+    transform: rotate(-14deg);
+    border: 5px solid;
+}
+
+.ml_3{
+    transform: rotate(0deg);
+    width: 45rem;
+    border: 5px solid;
+}
+
+.ml_4{
+    transform: rotate(8deg);
+    width: 26rem;
+    border: 5px dashed;
+}
+
+
+/* 모달 */
+button {
+    all: unset;
+    background-color: steelblue;
+    border-radius: 10px;
+    cursor: pointer;
+    position: fixed;
+    top: 85%;
+    left: 90%;
+    color: #77A0DD;
+    width: 3.9rem;
+    height: 3.9rem;
+    border-radius: 70px;
+    font-size: 4rem;
+    border: 3px solid;
+
+}
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center; 
+    line-height: 45px;
+    width: 100%;
+    height: 100%;
+    top: 17%;
+    left: 71%;
+}
+.modal_overlay {
+    position: absolute;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    width: 100%;
+    height: 100%;
+}
+.modal_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background-color: #77A0DD;
+    opacity:0.9;
+    padding: 10px;
+    border-radius: 15px;
+    top: 0;
+    width: 17%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+        0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.hidden {
+    display: none;
+}
+
+.mc_text{
+    border-bottom: 1px solid lightgrey;
+}
+.mc_link{
+    text-decoration: none;
+    color: black;
+}
+
+

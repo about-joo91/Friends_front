@@ -37,14 +37,15 @@ async function sign_in() {
         })
 
         let response = await result.json()
-        if (result.status == 200){
+        if (result.status == 200) {
             alert("로그인 되었습니다!")
             for (const key in response) {
                 localStorage.setItem(key, response[key])
             }
-            window.location.href = "../../Ko+jin_test/detail.html?post_id=" + "1";
+            // window.location.href = "../../Ko+jin_test/detail.html?post_id=" + "1";
+            location.href = '/joo_test/main.html'
         }
-        else{
+        else {
 
             alert("아이디나 비밀번호를 확인 해 주세요!!")
         }
@@ -66,7 +67,7 @@ async function sign_up() {
                 "Access-Control-Allow-Origin": "*",
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                
+
             },
             body: JSON.stringify({
                 "username": username,
@@ -75,9 +76,14 @@ async function sign_up() {
             })
         })
         let res = result.json()
+<<<<<<< HEAD:Kotest/user/sign_page.js
         if (result.ok){
             alert("회원가입을 축하합니다!!")
             location.href = '../comment_test/sign_page.html'
+=======
+        if (result.ok) {
+            location.reload()
+>>>>>>> 217cc1e7d87f3bfa98f9c9db67e7fb0f71eb9704:Kotest/sign_page.js
         }
         else {
             alert(res['message'])
