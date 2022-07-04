@@ -55,13 +55,16 @@ function parseJwt (token) {
 
     return JSON.parse(jsonPayload);
 };
-
+const urlParams = new URLSearchParams(window.location.search); 
+const url_post_id = urlParams.get('post_id');
 // 서버에서 get으로 댓글을 불러오는 코드
 const db_comment_box = document.querySelector('.db_comment_box')
 const db_input = document.getElementById('db_input')
+const db_title = document.querySelector('.db_title')
+const db_content = document.querySelector('.db_content')
 window.onload = 
 async function get_comment() {
-    const result = await fetch(BASE_URL + '/comment/1', {
+    const result = await fetch(BASE_URL + '/comment/'+ url_post_id, {
         method: 'GET',
         mode: 'cors',
         headers: {
@@ -75,8 +78,15 @@ async function get_comment() {
     let res = await result.json()
     if (result.status == 200){
         let tmp_comment = ``
-        for(let i = 0; i < res.length; i++){
-            comment = res[i]
+        console.log(res.post)
+        post = res.post[0]
+
+        db_title.innerHTML = post.title
+        db_content.innerHTML = post.content
+        // 댓글을 불러오는 코드
+        for(let i = 0; i < res.comment.length; i++){
+            comment = res.comment[i]
+            console.log(comment, post)
             if (parseJwt(localStorage.getItem("access")).user_id == comment.user){
                 tmp_comment += 
             `<div class="db_comment">
@@ -132,6 +142,7 @@ async function make_comment(post_id) {
         if (result.status == 200){
             alert("댓글을 달았습니다!!")
             location.href = '../../Ko+jin_test/detail.html'
+            // location 할 때 pharams
         }
         else {
             alert("댓글 작성이 실패했습니다!!")
