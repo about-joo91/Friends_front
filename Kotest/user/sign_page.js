@@ -42,7 +42,7 @@ async function sign_in() {
             for (const key in response) {
                 localStorage.setItem(key, response[key])
             }
-            location.href = '../comment_test/comment.html'
+            location.href = '../../Ko+jin_test/detail.html'
         }
         else{
 
