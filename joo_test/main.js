@@ -1,41 +1,48 @@
 const BASE_URL = 'http://127.0.0.1:8000';
 
+let page_num = 0;
+let len_of_posts = 0;
+
 const mb_left = document.querySelector('.mb_left');
 window.onload = async function () {
     if (!localStorage.hasOwnProperty('access')) {
         location.replace('/Kotest/sign_page.html')
     }
     token = localStorage.getItem('access');
-    const result = await fetch(BASE_URL + '/joo_test/', {
+    const result = await fetch(BASE_URL + '/joo_test?page_num=' + page_num, {
         method: 'GET',
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${token}`,
-        }
+        },
     })
     let response = await result.json()
 
     if (result.status == 200) {
-        let left_html = ``;
+        len_of_posts = response.len_of_posts;
+        page_num += 1
+        let left_html = `<div class="image_wrap_box">`;
         for (let i = 0; i < response.posts.length; i++) {
-            left_html += `
-            <div class="m_l_img${i}_box">
-            <div class="m_l_img${i}_header_box">
+            let class_idx = parseInt(i % 4)
+            left_html += `<div class="m_l_img${class_idx}_box">
+            <div class="m_l_img${class_idx}_header_box">
                 <i class="bi bi-heart img_heart_icon" id = "img_heart_icon_${response.posts[i].id}"></i>
-                <div class="m_l_img${i}_back">
-                    <div class="m_l_img${i}_header">${response.posts[i].author}</div>
-                    <i class="bi bi-three-dots img_three-dots" id="img_three-dots_${response.posts[i].id}" onclick="edit_modal_in('${response.posts[i].id}')"></i>
+                <div class="m_l_img${class_idx}_back">
+                    <div class="m_l_img${class_idx}_header">${response.posts[i].author}</div>
+                    <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="edit_modal_in('${response.posts[i].id}')"></i>
                 </div>
             </div>
             <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
-            <img class="m_l_img${i}" src="${response.posts[i].img_url}" />
-            </a>
-            <div class="m_l_img${i}_title">${response.posts[i].title}</div>
+            <img class="m_l_img${class_idx}" src="${response.posts[i].img_url}"/>
+            <div class="m_l_img${class_idx}_title">${response.posts[i].title}</div>
         </div>`
         }
+        left_html += '</div><div style="height:100px;"></div>'
         mb_left.innerHTML = left_html
+
         const mb_right = document.querySelector('.mb_right');
-        let right_html = `<div class="mb_r_profile_header_box">
+        if (response.my_post.author != null) {
+            let right_html = `<div class="mb_r_profile_header_box">
         <i class="bi bi-heart heart_icon"></i>
         <div class="mb_r_phb_back">
             <div class="mb_r_profile_header">${response.my_post.author}</div>
@@ -46,7 +53,10 @@ window.onload = async function () {
     <div class="mb_r_title">
         ${response.my_post.title}
     </div>`
-        mb_right.innerHTML = right_html
+            mb_right.innerHTML = right_html
+        } else {
+            mb_right.innerHTML = ''
+        }
     } else {
         location.replace('/Kotest/sign_page.html')
     }
@@ -226,3 +236,42 @@ document.getElementById("title_button").addEventListener('click', () => {
 document.getElementById("content_button").addEventListener('click', () => {
     document.getElementById('content').focus();
 })
+
+async function get_other_posts() {
+    if (parseInt(len_of_posts / 4) >= page_num && ((mb_left.scrollTop + mb_left.offsetHeight) >= (mb_left.scrollHeight))) {
+        setTimeout(() => {
+
+        }, 1000);
+        token = localStorage.getItem('access');
+        const result = await fetch(BASE_URL + '/joo_test?page_num=' + page_num, {
+            method: 'GET',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+            },
+        })
+        let response = await result.json()
+        if (result.status == 200) {
+            page_num += 1
+            let left_html = `<div class="image_wrap_box">`;
+            for (let i = 0; i < response.posts.length; i++) {
+                let class_idx = parseInt(i % 4)
+                left_html += `<div class="m_l_img${class_idx}_box">
+                <div class="m_l_img${class_idx}_header_box">
+                    <i class="bi bi-heart img_heart_icon" id = "img_heart_icon_${response.posts[i].id}"></i>
+                    <div class="m_l_img${class_idx}_back">
+                        <div class="m_l_img${class_idx}_header">${response.posts[i].author}</div>
+                        <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="edit_modal_in('${response.posts[i].id}')"></i>
+                    </div>
+                </div>
+                <img class="m_l_img${class_idx}" src="${response.posts[i].img_url}"/>
+                <div class="m_l_img${class_idx}_title">${response.posts[i].title}</div>
+            </div>`
+            }
+            left_html += '</div><div style="height:100px;"></div>'
+            mb_left.innerHTML += left_html
+        }
+    }
+}
+
+mb_left.addEventListener('scroll', get_other_posts)
