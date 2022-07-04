@@ -11,6 +11,50 @@
 </head>
 
 <body>
+    <!-- edit 모달 -->
+    <div id="edit_modal_wrapper" class="edit_modal_wrapper">
+        <div id="edit_modal">
+            <div>수정</div>
+            <hr style="width: 200px;" class="solid">
+            <div class="share_button" onclick="google_auth()">공유</div>
+            <hr style="width: 200px;" class="solid">
+            <div>삭제</div>
+        </div>
+    </div>
+    <!-- 메인 모달 -->
+    <div class="modal_main_wrapper">
+        <div class="mc_container">
+            <div id="preview" class="mc_modal">
+                <div>
+                    <img id="out_put" src="/jintest//upload.jpg">
+                </div>
+            </div>
+            <div class="modal_buttonbox">
+                <div class="mb_container"></div>
+                <label class="mb_file_select" for="image_input">1. 파 일 선 택</label>
+                <input class="mb_file_input" id="image_input" type="file" accept='image/*' onchange="privew(event);" />
+                <select class="mb_char_choice">
+                    <option>2. 캐 릭 터 선택</option>
+                    <option>엘사</option>
+                    <option>라이언</option>
+                    <option>주맨</option>
+                </select>
+                <button class="mb_title_button" id="title_button"><span>3. 제 목 입 력 </span> </button>
+                <button class="mb_content_button" id="content_button"><span>4. 내 용 입 력 </span> </button>
+                <button class="mb_up_button" onclick="post_upload()" id="upload_button"><span>5. 업 로 드</span></button>
+                <button class="mb_back_button" id="clear"><span>취 소</span></button>
+            </div>
+            <div class="modal_line">
+                <div class="ml_modal" id="event_div">
+                    <img src='/jintest/event.jpg' />
+                    <div>
+                        <input class="ml_title" type="text" id="title" placeholder="제목을 입력해주세요.">
+                        <textarea class="ml_content" id="content" placeholder="내용을 입력해주세요."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="email_modal_wrapper">
         <div class="email_modal">
             <div id="em_email_from" class="em_content_box">
@@ -34,73 +78,14 @@
     </div>
     <div class="main_header">
     </div>
-    <div class="main_body">
-        <div class="mb_plus_btn" onclick="auth()">+</div>
+    <div id="main_body">
+        <div class="mb_plus_btn" onclick="upload_modal_in()">+</div>
         <div class="mb_left">
-            <div class="mb_l_up">
-                <div class="m_l_u_img1_box">
-                    <div class="m_l_u_img1_header_box">
-                        <i class="bi bi-heart img_heart_icon"></i>
-                        <div class="m_l_u_img1_back">
-                            <div class="m_l_u_img1_header">about_joo</div>
-                            <i class="bi bi-three-dots img_three-dots"></i>
-                        </div>
-                    </div>
-                    <img class="m_l_u_img1" src="https://www.icegif.com/wp-content/uploads/2021/11/icegif-1426.gif" />
-                    <div class="m_l_u_img1_title">title</div>
-                </div>
-                <div class="m_l_u_img2_box">
-                    <div class="m_l_u_img2_header_box">
-                        <i class="bi bi-heart img_heart_icon"></i>
-                        <div class="m_l_u_img2_back">
-                            <div class="m_l_u_img2_header">about_joo</div>
-                            <i class="bi bi-three-dots img_three-dots"></i>
-                        </div>
-                    </div>
-                    <img class="m_l_u_img2" src="https://c.tenor.com/J4F181cEBV0AAAAC/the-lion-king-timon.gif" alt="">
-                    <div class="m_l_u_img2_title">title</div>
-                </div>
-            </div>
-            <div class="mb_l_down">
-                <div class="m_l_d_img3_box">
-                    <div class="m_l_d_img3_header_box">
-                        <i class="bi bi-heart img_heart_icon"></i>
-                        <div class="m_l_d_img3_back">
-                            <div class="m_l_d_img3_header">about_joo</div>
-                            <i class="bi bi-three-dots img_three-dots"></i>
-                        </div>
-                    </div>
-                    <img class="m_l_d_img3" src="https://i.gifer.com/1gFn.gif" alt="">
-                    <div class="m_l_d_img3_title">title</div>
-                </div>
-                <div>
-                    <div class="m_l_d_img4_header_box">
-                        <i class="bi bi-heart img_heart_icon"></i>
-                        <div class="m_l_d_img4_back">
-                            <div class="m_l_d_img4_header">about_joo</div>
-                            <i class="bi bi-three-dots img_three-dots"></i>
-                        </div>
-                    </div>
-                    <img class="m_l_d_img4"
-                        src="http://file3.instiz.net/data/cached_img/upload/2019/02/24/3/f8a33d9455792f22dfacf5a61ee790f5.gif"
-                        alt="">
-                    <div class="m_l_d_img4_title">title</div>
-                </div>
-            </div>
+
         </div>
         <div class="mb_divider"></div>
         <div class="mb_right">
-            <div class="mb_r_profile_header_box">
-                <i class="bi bi-heart heart_icon"></i>
-                <div class="mb_r_phb_back">
-                    <div class="mb_r_profile_header">about_joo</div>
-                    <i class="bi bi-three-dots"></i>
-                </div>
-            </div>
-            <img class="mb_r_my_img" src="https://tenor.com/view/frozen-elsa-happy-smiling-gif-16840042.gif" alt="">
-            <div class="mb_r_title">
-                title
-            </div>
+
         </div>
     </div>
 </body>

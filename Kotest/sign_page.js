@@ -37,13 +37,13 @@ async function sign_in() {
         })
 
         let response = await result.json()
-        if (result.status == 200){
+        if (result.status == 200) {
             for (const key in response) {
                 localStorage.setItem(key, response[key])
             }
-            location.href = '../Kotest/test.html'
+            location.href = '/joo_test/main.html'
         }
-        else{
+        else {
 
             alert("아이디나 비밀번호를 확인 해 주세요!!")
         }
@@ -53,19 +53,19 @@ async function sign_in() {
 }
 
 async function sign_up() {
-    const username = document.getElementById('inputUsername').value;
-    const userPassword = document.getElementById('inputPassword').value;
-    const userNickname = document.getElementById('inputNickname').value;
+    const username = document.getElementById('new_Username').value;
+    const userPassword = document.getElementById('new_Password').value;
+    const userNickname = document.getElementById('new_Nickname').value;
 
     if (username) {
-        const result = await fetch(BASE_URL + '/user/', {
+        const result = await fetch(BASE_URL + '/user/sign_up/', {
             method: 'POST',
             mode: 'cors',
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                
+
             },
             body: JSON.stringify({
                 "username": username,
@@ -74,8 +74,8 @@ async function sign_up() {
             })
         })
         let res = result.json()
-        if (result.ok){
-            location.replace('/Kotest/user/templates/sign_in.html')
+        if (result.ok) {
+            location.reload()
         }
         else {
             alert(res['message'])
