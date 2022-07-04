@@ -38,9 +38,11 @@ async function sign_in() {
 
         let response = await result.json()
         if (result.status == 200) {
+            alert("로그인 되었습니다!")
             for (const key in response) {
                 localStorage.setItem(key, response[key])
             }
+            // window.location.href = "../../Ko+jin_test/detail.html?post_id=" + "1";
             location.href = '/joo_test/main.html'
         }
         else {
@@ -74,7 +76,8 @@ async function sign_up() {
             })
         })
         let res = result.json()
-        if (result.ok) {
+        if (result.ok){
+            alert("회원가입을 축하합니다!!")
             location.reload()
         }
         else {
