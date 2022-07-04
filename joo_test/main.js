@@ -27,7 +27,9 @@ window.onload = async function () {
                     <i class="bi bi-three-dots img_three-dots" id="img_three-dots_${response.posts[i].id}" onclick="edit_modal_in('${response.posts[i].id}')"></i>
                 </div>
             </div>
+            <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
             <img class="m_l_img${i}" src="${response.posts[i].img_url}" />
+            </a>
             <div class="m_l_img${i}_title">${response.posts[i].title}</div>
         </div>`
         }

@@ -78,7 +78,6 @@ async function get_comment() {
     let res = await result.json()
     if (result.status == 200){
         let tmp_comment = ``
-        console.log(res.post)
         post = res.post[0]
 
         db_title.innerHTML = post.title
@@ -86,7 +85,6 @@ async function get_comment() {
         // 댓글을 불러오는 코드
         for(let i = 0; i < res.comment.length; i++){
             comment = res.comment[i]
-            console.log(comment, post)
             if (parseJwt(localStorage.getItem("access")).user_id == comment.user){
                 tmp_comment += 
             `<div class="db_comment">
@@ -96,7 +94,7 @@ async function get_comment() {
                 <div class="db_comment_edit" onclick = "edit_click(${comment.id})">
                 수정
                 </div>
-                <div class="db_comment_delete" onclick = "delete_comment(${comment.id})">
+                <div class="db_comment_delete" onclick = "delete_comment(${comment.id},${post.id})">
                 삭제
                 </div>
             </div>`
@@ -111,7 +109,7 @@ async function get_comment() {
         db_comment_box.innerHTML = tmp_comment
         db_input.innerHTML +=`
         <input id="new_comment_text" type="text" placeholder="댓글을 입력해주세요">
-        <button onclick="make_comment(${comment.post})" class="db_button" type="submit">입력</button>
+        <button onclick="make_comment(${post.id})" class="db_button" type="submit">입력</button>
         `
     }
     else {
@@ -141,7 +139,7 @@ async function make_comment(post_id) {
         let res = result.json()
         if (result.status == 200){
             alert("댓글을 달았습니다!!")
-            location.href = '../../Ko+jin_test/detail.html'
+            location.href = '../../Ko+jin_test/detail.html?post_id=' + post_id
             // location 할 때 pharams
         }
         else {
@@ -188,7 +186,7 @@ async function edit_comment_fun(comment_id) {
         let res = result.json()
         if (result.status == 200){
             alert("댓글 수정이 되었습니다!")
-            location.href = '../../Ko+jin_test/detail.html'
+            location.href = '../../Ko+jin_test/detail.html?post_id=' + post_id
         }
         else {
             alert("댓글 수정이 실패했습니다!!")
@@ -200,7 +198,7 @@ async function edit_comment_fun(comment_id) {
 }
 
 // 댓글을 삭제하기 위한 코드
-async function delete_comment(comment_id) {
+async function delete_comment(comment_id, post_id) {
     const delete_comment = document.getElementById('db_comment_comment_' + comment_id);
 
     if (delete_comment) {
@@ -220,7 +218,7 @@ async function delete_comment(comment_id) {
         let res = result.json()
         if (result.status == 200){
             alert("댓글이 삭제 되었습니다!!")
-            location.href = '../../Ko+jin_test/detail.html'
+            location.href = '../../Ko+jin_test/detail.html?post_id=' + post_id
         }
         else {
             alert("댓글 삭제가 실패했습니다!!")

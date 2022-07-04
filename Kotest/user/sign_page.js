@@ -76,14 +76,9 @@ async function sign_up() {
             })
         })
         let res = result.json()
-<<<<<<< HEAD:Kotest/user/sign_page.js
         if (result.ok){
             alert("회원가입을 축하합니다!!")
-            location.href = '../comment_test/sign_page.html'
-=======
-        if (result.ok) {
             location.reload()
->>>>>>> 217cc1e7d87f3bfa98f9c9db67e7fb0f71eb9704:Kotest/sign_page.js
         }
         else {
             alert(res['message'])
