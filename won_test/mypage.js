@@ -11,5 +11,62 @@ modal_overlay.addEventListener("click", () => {
 });
 
 
+const BASE_URL = 'http://127.0.0.1:8000';
+const user_id = 1;
 
 
+window.onload = async function(user_id){
+    if (!localStorage.hasOwnProperty('access')) {
+        location.replace('/Kotest/sign_page.html')
+    }
+
+    token = localStorage.getItem('access');
+    const myposts = await fetch(`${BASE_URL}/won_test/mypage/${user_id}`,{
+        method:'GET',
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    let response = await result.json()
+    if (result.status==200){
+        myposts_html = ``;
+        for (let i = 1; i < response.posts.length+1; i++){
+            if (i % 4 == 1){
+                myposts_html += `<div class="ml_div">
+                                    <img class="ml_same ml_1" src="${response.posts[i].img_url}">`
+            }else if (i%4==2){
+                myposts_html +=`<img class="ml_same ml_2" src="${response.posts[i].img_url}"></div>`
+            }else if (i%4 ==3){
+                myposts_html +=`<div class="ml_div">
+                                <img class="ml_same ml_3" src="${response.posts[i].img_url}">`
+            }else{
+                myposts_html += `<img class="ml_same ml_4" src="${response.posts[i].img_url}"></div>`
+
+            }
+        }
+    } else {
+        location.replace('/Kotest/sign_page.html')
+    }
+}
+
+
+window.onscroll = function() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        // $.ajax({
+        //     url: "{% url 'ajax_method' %}",
+        //     type: "GET",
+        //     datatype: 'json',
+        //     success: function(){
+        //         let test1 = document.getElementById('#scroll')
+
+        //     }
+
+
+        // }
+
+        )
+    }
+
+
+}

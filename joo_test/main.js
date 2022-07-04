@@ -1,5 +1,9 @@
 const BASE_URL = 'http://127.0.0.1:8000';
 
+function mypage(){
+    location.replace('/won_test/mypage.html')
+}
+
 const mb_left = document.querySelector('.mb_left');
 window.onload = async function () {
     if (!localStorage.hasOwnProperty('access')) {

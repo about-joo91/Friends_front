@@ -11,7 +11,6 @@
     <script src="https://kit.fontawesome.com/b57dd44d80.js" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" type="text/css" href = "mypage.css">
-    
 
     <title>Mypage</title>
 
@@ -23,17 +22,26 @@
     </div>
     <div class="myimg-list">
         <div class="ml_div">
-            <img class="ml_same ml_1" src="https://c.tenor.com/MjQCzuuhT10AAAAC/judy-hopps-carrot-pen.gif">
-            <img class="ml_same ml_2" src="https://c.tenor.com/2wUzXNHcZpQAAAAC/iu-%EC%95%84%EC%9D%B4%EC%9C%A0.gif">
+            <img class="ml_same ml_1" src="">
+            <img class="ml_same ml_2" src="">
         </div>
         <div class="ml_div">
-            <img class="ml_same ml_3" src="https://blog.kakaocdn.net/dn/3hT8g/btq2QUi8E3O/cci8EfiBKKQCYAo9vOPZtk/img.gif">
-            <img class="ml_same ml_4" src="https://thumbs.gfycat.com/AchingBetterIrishdraughthorse-size_restricted.gif">
+            <img class="ml_same ml_3" src="">
+            <img class="ml_same ml_4" src="">
+        </div>
+        <div class="ml_div">
+            <img class="ml_same ml_1" src="">
+            <img class="ml_same ml_2" src="">
+        </div>
+        <div class="ml_div">
+            <img class="ml_same ml_3" src="">
+            <img class="ml_same ml_4" src="">
         </div>
     </div>
+    
 
     <button class="modalButton">
-        <i class="fa-solid fa-circle-plus" id="modal_btn";></i>
+        <i class="fa-solid fa-circle-plus" id="modal_btn"></i>
     </button>
     <div class="modal hidden">
       <div class="modal_overlay"></div>
@@ -50,6 +58,52 @@
             <div><i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</div></a>
       </div>
     </div>
+
+
+
+
+
+
+
+<!-- <div>
+    <ul class="comment_list_ul">
+         이전 페이지 
+        {% if comment_list.has_previous %}
+        <li>
+            <a href="?page={{ comment_list.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li>
+            <a tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+
+        페이지 리스트 
+        {% for page_number in comment_list.paginator.page_range %}
+        {% if page_number == comment_list.number %}
+        <li>
+            <a href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        <!-- 다음 페이지 
+        {% if comment_list.has_next %}
+        <li>
+            <a href="?page={{ comment_list.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li>
+            <a tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+</div> -->
+
 
 </body>
 <script src="mypage.js"></script>

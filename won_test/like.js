@@ -37,14 +37,14 @@ async function postLike(post_id){
         mode: 'cors',
     })
 
-    if (response.status ==200){
-        console.log(response)
-        response_json = await response.json()
-        console.log(response_json)
-        return response_json
-    }else{
-        alert(response.status)
-    }
+    // if (response.status ==200){
+    //     console.log(response)
+    //     response_json = await response.json()
+    //     console.log(response_json)
+    //     return response_json
+    // }else{
+    //     alert(response.status)
+    // }
 }
 
 async function like(){
