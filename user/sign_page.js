@@ -43,7 +43,7 @@ async function sign_in() {
                 localStorage.setItem(key, response[key])
             }
             // window.location.href = "../../Ko+jin_test/detail.html?post_id=" + "1";
-            location.href = '/joo_test/main.html'
+            location.href = '/main/main.html'
         }
         else {
 
