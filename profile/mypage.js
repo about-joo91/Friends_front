@@ -1,3 +1,4 @@
+//모달
 const modalButton = document.querySelector(".modalButton");
 const modal = document.querySelector(".modal");
 const closeModal = document.querySelector(".closeModal");
@@ -11,18 +12,18 @@ modal_overlay.addEventListener("click", () => {
 });
 
 
-const BASE_URL = 'http://127.0.0.1:8000';
-const user_id = 5;
+const BASE_URL = 'http://54.180.75.68:8000';
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const post_type = urlParams.get('page_type');
 
 if (post_type === 'liked'){
-    URL = BASE_URL + '/won_test/likedpage/' + user_id
+    URL = BASE_URL + '/won_test/likedpage/' 
 }else if (post_type === "saved"){
-    URL = BASE_URL + "/bookmark_test/"
+    URL = BASE_URL + "/won_test/bookmark/"
 }else{
-    URL = BASE_URL + '/won_test/mypage/' + user_id
+    URL = BASE_URL + '/won_test/mypage/'
 }
 
 
@@ -65,7 +66,7 @@ window.onload = async function(){
     }
 }
 
-
+// 로그아웃
 function logout() { 
     localStorage.clear(); 
     location.replace('/user/sign_page.html') 
