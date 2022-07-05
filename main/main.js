@@ -27,7 +27,6 @@ window.onload = async function () {
         })
         let response = await result.json()
         if (result.status === 200) {
-            console.log(response)
             const hbb_cur_user = document.querySelector('.hbb_cur_user');
             hbb_cur_user.innerText = response.cur_user.nickname;
             len_of_posts = response.len_of_posts;
@@ -53,7 +52,7 @@ window.onload = async function () {
                         <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="img_edit_modal_in('${response.posts[i].id}', '${response.posts[i].author.id}')"></i>
                     </div>
                 </div>
-                <a href="../../detail/detail.html?post_id=${response.posts[i].id}">
+                <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
                 <img class="m_l_img${class_idx}" src="${response.posts[i].img_url}"/></a>
                 <div class="m_l_img${class_idx}_title">${response.posts[i].title}</div>
             </div>`
@@ -275,7 +274,6 @@ email_modal_wrapper.addEventListener('click', function (e) {
 // 업로드 모달 in
 const modal_main_wrapper = document.querySelector('.modal_main_wrapper')
 function upload_modal_in() {
-    console.log("Dddd")
     modal_main_wrapper.style.display = 'flex';
     body.style.overflow = "hidden";
 }
@@ -287,57 +285,18 @@ modal_main_wrapper.addEventListener('click', function (e) {
         body.style.overflow = "auto";
     }
 })
-
-let img_url =""
-
-async function preview() {
-    const selectFile = document.getElementById("image_input").files[0];
-    const choice = document.getElementById("choice_char").value;
-    let formData = new FormData();
-    formData.append('postimg', selectFile);
-    formData.append('choice',choice)
-    if (selectFile) {
-        const token = localStorage.getItem('access')
-        const result = await fetch(BASE_URL + '/joo_test/priview/', {
-            method: 'POST',
-            cache: 'no-cache',
-            mode: 'cors',
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Authorization": `Bearer ${token}`,
-                'X-CSRFToken': csrftoken,
-            },
-            body: formData,
-        })
-        let res = await result.json()
-        img_url = res
-        let event = document.getElementById("event_div")
-        event.src = `https://bucketfriends.s3.ap-northeast-2.amazonaws.com/${res}`;
-
-        if (result.ok) {
-            alert("결과 출력 중입니다 조금만 기다려주세요!")
-        }
-        else {
-            alert(res['messge'])
-        }
-
-    } else {
-        alert("파일을 선택해주세요!")
-    }
-}
-
-
-
 // 업로드 함수 
 async function post_upload() {
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
+    const selectFile = document.getElementById("image_input").files[0];
     let formData = new FormData();
-    formData.append('postimg', img_url);
+    formData.append('postimg', selectFile);
     formData.append('title', title);
     formData.append('content', content);
 
-    if (title && content) {
+
+    if (title && content && selectFile) {
         const token = localStorage.getItem('access')
         const result = await fetch(BASE_URL + '/joo_test/', {
             method: 'POST',
@@ -350,6 +309,10 @@ async function post_upload() {
             },
             body: formData,
         })
+        let res = await result.json()
+        let event = document.getElementById("event_div")
+        event.innerHTML = `<img src="https://bucketfriends.s3.ap-northeast-2.amazonaws.com/${res}"/>`;
+
         if (result.ok) {
             alert("업로드 성공입니다!")
             window.location.reload()
@@ -357,6 +320,7 @@ async function post_upload() {
         else {
             alert(res['messge'])
         }
+
     } else {
         alert("제목과 내용을 입력해주세요.")
     }
@@ -398,31 +362,32 @@ async function delete_post(post_id) {
 // 무한 스크롤 함수
 async function get_other_posts() {
     if (parseInt(len_of_posts / 4) >= page_num && ((mb_left.scrollTop + mb_left.offsetHeight) >= (mb_left.scrollHeight))) {
-        setTimeout(() => {
-
-        }, 2000);
-        token = localStorage.getItem('access');
-        const result = await fetch(BASE_URL + '/joo_test/?page_num=' + page_num, {
-            method: 'GET',
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Authorization": `Bearer ${token}`,
-            },
-        })
-        let response = await result.json()
-        if (result.status == 200) {
-            page_num += 1
-            let left_html = `<div class="image_wrap_box">`;
-            for (let i = 0; i < response.posts.length; i++) {
-                if (response.posts[i].liked) {
-                    heart_icon = 'bi-heart-fill'
-                    color_class = 'img_heart_icon_red'
-                } else {
-                    heart_icon = 'bi-heart'
-                    color_class = 'img_heart_icon'
-                }
-                let class_idx = parseInt(i % 4)
-                left_html += `<div class="m_l_img${class_idx}_box">
+        const loading = document.querySelector('.loading');
+        loading.style.display = 'block';
+        setTimeout(async () => {
+            loading.style.display = 'none';
+            token = localStorage.getItem('access');
+            const result = await fetch(BASE_URL + '/joo_test/?page_num=' + page_num, {
+                method: 'GET',
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Authorization": `Bearer ${token}`,
+                },
+            })
+            let response = await result.json()
+            if (result.status == 200) {
+                page_num += 1
+                let left_html = `<div class="image_wrap_box">`;
+                for (let i = 0; i < response.posts.length; i++) {
+                    if (response.posts[i].liked) {
+                        heart_icon = 'bi-heart-fill'
+                        color_class = 'img_heart_icon_red'
+                    } else {
+                        heart_icon = 'bi-heart'
+                        color_class = 'img_heart_icon'
+                    }
+                    let class_idx = parseInt(i % 4)
+                    left_html += `<div class="m_l_img${class_idx}_box">
                 <div class="m_l_img${class_idx}_header_box">
                     <i class="bi `+ heart_icon + ` "` + color_class + ` img_heart_icon_${response.posts[i].id}" onclick="like('${response.my_post.id}')"></i>
                     <div class="m_l_img${class_idx}_back">
@@ -430,14 +395,16 @@ async function get_other_posts() {
                         <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="img_edit_modal_in('${response.posts[i].id}', '${response.posts[i].author.id}')"></i>
                     </div>
                 </div>
-                <a href="../detail/detail.html?post_id=${response.posts[i].id}">
+                <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
                 <img class="m_l_img${class_idx}" src="${response.posts[i].img_url}"/></a>
                 <div class="m_l_img${class_idx}_title">${response.posts[i].title}</div>
             </div>`
+                }
+                left_html += '</div><div style="height:100px;"></div>'
+                mb_left.innerHTML += left_html
             }
-            left_html += '</div><div style="height:100px;"></div>'
-            mb_left.innerHTML += left_html
-        }
+        }, 1000);
+
     }
 }
 

@@ -708,3 +708,12 @@ html {
 .rfm_follow_btn:hover {
     cursor: pointer;
 }
+
+/* 로딩바 */
+.loading {
+    position: fixed;
+    top: 94%;
+    left: 30%;
+    display: none;
+    color: white;
+}
