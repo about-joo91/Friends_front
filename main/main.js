@@ -394,7 +394,7 @@ async function get_other_posts() {
                         <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="img_edit_modal_in('${response.posts[i].id}', '${response.posts[i].author.id}')"></i>
                     </div>
                 </div>
-                <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
+                <a href="../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
                 <img class="m_l_img${class_idx}" src="${response.posts[i].img_url}"/></a>
                 <div class="m_l_img${class_idx}_title">${response.posts[i].title}</div>
             </div>`

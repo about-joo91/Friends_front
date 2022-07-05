@@ -42,15 +42,14 @@ async function sign_in() {
             for (const key in response) {
                 localStorage.setItem(key, response[key])
             }
-            // window.location.href = "../../Ko+jin_test/detail.html?post_id=" + "1";
-            location.href = '/joo_test/main.html'
+            location.href = '../main/main.html'
         }
         else {
 
             alert("아이디나 비밀번호를 확인 해 주세요!!")
         }
     } else {
-        alert("아이디와 패스워드를 입력해주세요")
+        alert("아이디와 패스워드는 8글자가 넘어야 합니다.")
     }
 }
 
@@ -59,7 +58,7 @@ async function sign_up() {
     const userPassword = document.getElementById('new_Password').value;
     const userNickname = document.getElementById('new_Nickname').value;
 
-    if (username) {
+    if (username.length > 4) {
         const result = await fetch(BASE_URL + '/user/sign_up/', {
             method: 'POST',
             mode: 'cors',
@@ -81,10 +80,10 @@ async function sign_up() {
             location.reload()
         }
         else {
-            alert(res['message'])
+            alert("중복되는 아이디나, 닉네임이 있습니다!")
         }
     } else {
-        alert("모든 값을 입력하셔야 합니다.")
+        alert("아이디는 4글자 이상이어야 합니다.")
     }
 
 }

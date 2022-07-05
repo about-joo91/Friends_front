@@ -89,6 +89,10 @@ body{
     align-items: center;
     color: violet;
 }
+.edit_comment{
+    resize: none;
+    width: 100%;
+}
 .comment_and_date{
     display: flex;
     align-items: center;
@@ -108,15 +112,15 @@ body{
 .fa-bookmark  {
     cursor: pointer;
     position: absolute;
-    top: 40.5%;
-    left: 75%;
+    top: 37.5%;
+    left: 84%;
 }
 
 .fa-heart{
     cursor: pointer;
     position: absolute;
-    top: 40.5%;
-    left: 77%;
+    top: 37.5%;
+    left: 81%;
 }
 .db_input {
     width: 100%;
@@ -135,7 +139,7 @@ body{
 }
 .db_button {
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     top: 91.7%;
     left: 84%;

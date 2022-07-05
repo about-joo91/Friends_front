@@ -1,33 +1,5 @@
 const BASE_URL = 'http://127.0.0.1:8000';
 
-let bookmark_empty = document.getElementById("empty_bookmark")
-let bookmark_fill = document.getElementById("fill_bookmark")
-let like_empty = document.getElementById("empty_like")
-let like_fill = document.getElementById("fill_like")
-
-bookmark_empty.addEventListener('click', () => {
-    bookmark_fill.style.display = 'block';
-    bookmark_empty.style.display = 'none';
-    alert("저장 완료!")
-})
-
-bookmark_fill.addEventListener('click', () => {
-    bookmark_empty.style.display = 'block';
-    bookmark_fill.style.display = 'none';
-    alert("저장 취소 완료!")
-})
-
-like_empty.addEventListener('click', () => {
-    like_fill.style.display = 'block';
-    like_empty.style.display = 'none';
-    alert("좋아요 완료!")
-})
-
-like_fill.addEventListener('click', () => {
-    like_empty.style.display = 'block';
-    like_fill.style.display = 'none';
-    alert("좋아요 취소 완료!")
-})
 // 쿠키 할당
 function get_cookie(name) {
     let cookie_value = null;
@@ -61,6 +33,41 @@ const db_comment_box = document.querySelector('.db_comment_box')
 const db_input = document.getElementById('db_input')
 const db_title = document.querySelector('.db_title')
 const db_content = document.querySelector('.db_content')
+
+const bookmark_empty = document.getElementById("bookmark_empty")
+// const bookmark_fill = document.getElementById("fill_bookmark")
+
+async function click_bookmark(){
+    const token = localStorage.getItem('access')
+    const result = await fetch(BASE_URL + '/won_test/bookmark/' + url_post_id , {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    let res = await result.json()
+    if (result.status == 200) {
+        alert("북마크 되었습니다.")
+        if(bookmark_empty.classList.contains('bi-bookmark')){
+            console.log(bookmark_empty.classList)
+            bookmark_empty.classList.replace("bi-bookmark", "bi-bookmark-fill");
+        }
+        else{
+            bookmark_empty.classList.replace("bi-bookmark-fill","bi-bookmark")
+        }
+        // location.href = '../../Ko+jin_test/detail.html?post_id=' + url_post_id
+        // .죄송합니다. 우ㅡ;ㅣ
+    }
+    else {
+        alert("북마크 취소 되었습니다.")
+    }
+}
+
 window.onload =
     async function get_comment() {
         const result = await fetch(BASE_URL + '/comment/' + url_post_id, {
@@ -77,10 +84,10 @@ window.onload =
         let res = await result.json()
         if (result.status == 200) {
             let tmp_comment = ``
+            // post에 대한 제목, 내용, 이미지를 가져오는 코드
             post = res.post[0]
-
             db_title.innerHTML = post.title
-            db_content.innerHTML = post.content
+            db_content.innerHTML += post.content
             // 댓글을 불러오는 코드
             for (let i = 0; i < res.comment.length; i++) {
                 comment = res.comment[i]
@@ -115,9 +122,10 @@ window.onload =
         `
         }
         else {
-            alert("댓글 작성이 실패했습니다!!")
+            alert("세션이 만료 되었습니다.")
         }
     }
+
 
 // 댓글을 작성하는 코드
 async function make_comment(post_id) {
@@ -142,7 +150,6 @@ async function make_comment(post_id) {
         if (result.status == 200) {
             alert("댓글을 달았습니다!!")
             location.href = '../../Ko+jin_test/detail.html?post_id=' + post_id
-            // location 할 때 pharams
         }
         else {
             alert("댓글 작성이 실패했습니다!!")
