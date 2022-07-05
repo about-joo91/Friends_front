@@ -11,7 +11,7 @@ modal_overlay.addEventListener("click", () => {
 });
 
 
-const BASE_URL = 'http://127.0.0.1:8000';
+// const BASE_URL = 'http://127.0.0.1:8000';
 const user_id = 5;
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -70,3 +70,21 @@ function logout() {
     localStorage.clear(); 
     location.replace('/user/sign_page.html') 
 }
+
+
+// 업로드 모달 in
+function upload_modal_in() {
+    console.log("dddd")
+    const modal_main_wrapper = document.querySelector('.modal_main_wrapper')
+    const body = document.body;
+    modal_main_wrapper.style.display = 'flex';
+    body.style.overflow = "hidden";
+}
+
+// 업로드 모달 out
+modal_main_wrapper.addEventListener('click', function (e) {
+    if (e.target.classList.contains('modal_main_wrapper')) {
+        modal_main_wrapper.style.display = 'none';
+        body.style.overflow = "auto";
+    }
+})
