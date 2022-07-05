@@ -1,9 +1,9 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const BASE_URL = "http://127.0.0.1:8000"
+
 
 let liked = false
 const urlParams = new URLSearchParams(window.location.pathname);
-const post_id = 1
+const post_id = 14
 
 
 function get_cookie(name) {
@@ -23,16 +23,14 @@ function get_cookie(name) {
 const csrftoken = get_cookie('csrftoken')
 
 
-
 async function postLike(post_id){
-    const response = await fetch(`${backend_base_url}/won_test/like/${post_id}`,{
+    const response = await fetch(`${BASE_URL}/won_test/like/${post_id}`,{
         headers:{
             'Authorization' : 'Bearer '+ localStorage.getItem("access"),
             "Access-Control-Allow-Origin": "*",
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken},
-
         method:'POST',
         mode: 'cors',
     })
@@ -57,3 +55,5 @@ async function like(){
     const response = postLike(post_id)
     console.log(response)
 }
+
+

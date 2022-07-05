@@ -1,5 +1,10 @@
 const BASE_URL = 'http://127.0.0.1:8000';
 
+
+function mypage() {
+    location.replace('/won_test/mypage.html')
+}
+
 let page_num = 0;
 let len_of_posts = 0;
 
@@ -9,7 +14,7 @@ const mb_left = document.querySelector('.mb_left');
 window.onload = async function () {
     if (!localStorage.hasOwnProperty('access')) {
         clearInterval(refresh_interval)
-        location.replace('/Kotest/user/sign_page.html')
+        location.replace('/user/sign_page.html')
     }
     token = localStorage.getItem('access');
     try {
@@ -21,54 +26,86 @@ window.onload = async function () {
             },
         })
         let response = await result.json()
-
         if (result.status === 200) {
+            console.log(response)
+            const hbb_cur_user = document.querySelector('.hbb_cur_user');
+            hbb_cur_user.innerText = response.cur_user.nickname;
             len_of_posts = response.len_of_posts;
             page_num += 1
             let left_html = `<div class="image_wrap_box">`;
+            // 포스트들을 불러와 각 스타일을 입히면서 html에 보내줌
             for (let i = 0; i < response.posts.length; i++) {
                 let class_idx = parseInt(i % 4)
+                let heart_icon = ''
+                let color_class = ''
+                if (response.posts[i].liked) {
+                    heart_icon = 'bi-heart-fill'
+                    color_class = 'img_heart_icon_red'
+                } else {
+                    heart_icon = 'bi-heart'
+                    color_class = 'img_heart_icon'
+                }
                 left_html += `<div class="m_l_img${class_idx}_box">
-            <div class="m_l_img${class_idx}_header_box">
-                <i class="bi bi-heart img_heart_icon" id = "img_heart_icon_${response.posts[i].id}"></i>
-                <div class="m_l_img${class_idx}_back">
-                    <div class="m_l_img${class_idx}_header">${response.posts[i].author}</div>
-                    <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="edit_modal_in('${response.posts[i].id}', '${response.posts[i].author_id}')"></i>
+                <div class="m_l_img${class_idx}_header_box">
+                    <i class="bi ` + heart_icon + ` ` + color_class + ` img_heart_icon_${response.posts[i].id}" onclick="like('${response.posts[i].id}')"></i>
+                    <div class="m_l_img${class_idx}_back">
+                        <div class="m_l_img${class_idx}_header">${response.posts[i].author.nickname}</div>
+                        <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="img_edit_modal_in('${response.posts[i].id}', '${response.posts[i].author.id}')"></i>
+                    </div>
                 </div>
-            </div>
-            <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
-            <img class="m_l_img${class_idx}" src="${response.posts[i].img_url}"/></a>
-            <div class="m_l_img${class_idx}_title">${response.posts[i].title}</div>
-        </div>`
+                <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
+                <img class="m_l_img${class_idx}" src="${response.posts[i].img_url}"/></a>
+                <div class="m_l_img${class_idx}_title">${response.posts[i].title}</div>
+            </div>`
             }
             left_html += '</div><div style="height:100px;"></div>'
             mb_left.innerHTML = left_html
 
+            // 오른쪽에 나의 가장 최근 포스트를 올려준다.
             const mb_right = document.querySelector('.mb_right');
             if (response.my_post.author != null) {
+                if (response.my_post.liked) {
+                    heart_icon = 'bi-heart-fill'
+                    color_class = 'img_heart_icon_red'
+                } else {
+                    heart_icon = 'bi-heart'
+                    color_class = 'img_heart_icon'
+                }
                 let right_html = `<div class="mb_r_profile_header_box">
-        <i class="bi bi-heart heart_icon"></i>
-        <div class="mb_r_phb_back">
-            <div class="mb_r_profile_header">${response.my_post.author}</div>
-            <i class="bi bi-three-dots"></i>
+            <i class="bi `+ heart_icon + ` ` + color_class + ` img_heart_icon_${response.my_post.id}" onclick="like('${response.my_post.id}')"></i>
+            <div class="mb_r_phb_back">
+                <div class="mb_r_profile_header">${response.my_post.author.nickname}</div>
+                <i class="bi bi-three-dots img_three_dots" id="img_three-dots_0" onclick="my_last_img_edit_modal_in('${response.my_post.id}')"></i>
+            </div>
         </div>
-    </div>
-    <img class="mb_r_my_img" src="${response.my_post.img_url}" alt="">
-    <div class="mb_r_title">
-        ${response.my_post.title}
-    </div>`
+        <img class="mb_r_my_img" src="${response.my_post.img_url}" alt="">
+        <div class="mb_r_title">
+            ${response.my_post.title}
+        </div>`
                 mb_right.innerHTML = right_html
             } else {
                 mb_right.innerHTML = ''
             }
+            const rec_follower_modal_wrapper = document.querySelector('.rec_follower_modal_wrapper');
+            rec_html = `<div class="rec_follower_modal"><br>추천 팔로워
+                <hr class="solid" style="width:290px">`
+            response.recommend_followers.forEach(rec_user => {
+                rec_html += `<div class=rfm_nametag>
+                    ${rec_user.username}
+                    <div class="rfm_follow_btn" onclick="follow('${rec_user.id}')">팔로우</div>
+                    </div>
+                    `
+            })
+            rec_html += '</div>'
+            rec_follower_modal_wrapper.innerHTML = rec_html
         } else {
             clearInterval(refresh_interval)
-            location.replace('/Kotest/user/sign_page.html')
+            location.replace('/user/sign_page.html')
         }
-    }
-    catch {
+    } catch (error) {
+        alert(error)
         clearInterval(refresh_interval)
-        location.replace('/Kotest/user/sign_page.html')
+        location.replace('/user/sign_page.html')
     }
 }
 // jwt를 디코딩하는 함수
@@ -98,7 +135,6 @@ function get_cookie(name) {
 }
 const csrftoken = get_cookie('csrftoken')
 const cur_user_id = parseJwt(localStorage.getItem('access'))['user_id']
-console.log(cur_user_id)
 const email_modal_wrapper = document.querySelector('.email_modal_wrapper')
 
 // gmail api 인증함수
@@ -151,35 +187,68 @@ async function send_email() {
     }
 }
 
-const body = document.body;
+// 추천 팔로워 모달
+
+const rec_follower_modal_wrapper = document.querySelector('.rec_follower_modal_wrapper');
+
+function rec_follower_modal_in() {
+    rec_follower_modal_wrapper.style.display = 'block';
+    mb_left.style.overflow = 'hidden';
+}
+rec_follower_modal_wrapper.addEventListener('click', function (e) {
+    if (e.target.classList.contains('rec_follower_modal_wrapper')) {
+        rec_follower_modal_wrapper.style.display = 'none';
+        mb_left.style.overflow = 'auto';
+    }
+})
 // 포스트 설정 모달 in
 const edit_modal_wrapper = document.getElementById('edit_modal_wrapper');
 
-function edit_modal_in(post_id, author_id) {
+// 내 이미지 모달
+function my_last_img_edit_modal_in(post_id) {
+    const img_three_dots = document.getElementById('img_three-dots_0');
+    let edit_modal_body = `<div id="edit_modal">
+        <div class="edit_modal_btn" onclick="google_auth()">게시글 공유</div>
+        <hr style="width: 200px;" dclass="solid">
+        <div class="edit_modal_btn edit_modal_red" onclick="delete_post('${post_id}')">삭제</div>
+    </div>`
+    edit_modal_wrapper.innerHTML = edit_modal_body
+
+    let rect = img_three_dots.getClientRects();
+    let el_top = rect[0]['top'];
+    let el_left = rect[0]['left'];
+    edit_modal.style.top = el_top + 5 + "px";
+    edit_modal.style.left = el_left - 200 + "px";
+    edit_modal_wrapper.style.display = "block";
+    body.style.overflow = "hidden";
+}
+// 이미지 수정 모달 in
+function img_edit_modal_in(post_id, author_id) {
     let edit_modal_body = ``
     if (parseInt(author_id) === parseInt(cur_user_id)) {
         edit_modal_body = `<div id="edit_modal">
-                                <div>수정</div>
-                                <hr style="width: 200px;" class="solid">
-                                <div class="share_button" onclick="google_auth()">게시글 공유</div>
+                                <div class="edit_modal_btn" onclick="google_auth()">게시글 공유</div>
                                 <hr style="width: 200px;" dclass="solid">
-                                <div class="edit_modal_red" onclick="delete_post('${post_id}')">삭제</div>
+                                <div class="edit_modal_btn edit_modal_red" onclick="delete_post('${post_id}')">삭제</div>
                             </div>`
     } else {
         edit_modal_body = `<div id="edit_modal">
-            <div>팔로우</div>
+            <div class="edit_modal_btn edit_modal_red" onclick="follow('${author_id}')">팔로우 취소</div>
             <hr style="width: 200px;" class="solid">
-            <div class="share_button" onclick="google_auth()">게시글 공유</div>
+            <div class="edit_modal_btn" onclick="google_auth()">게시글 공유</div>
         </div>`
     }
     edit_modal_wrapper.innerHTML = edit_modal_body
     const img_three_dots = document.getElementById('img_three-dots_' + post_id);
     const edit_modal = document.getElementById('edit_modal');
-    let rect = img_three_dots.getClientRects();
+
     let dots_p_el = img_three_dots.parentElement.parentElement;
     let dots_p_el_style = window.getComputedStyle(dots_p_el, null);
     let dots_p_el_transform_value = dots_p_el_style.getPropertyValue("transform");
     edit_modal.style.transform = dots_p_el_transform_value;
+
+
+    let rect = img_three_dots.getClientRects();
     let el_top = rect[0]['top'];
     let el_left = rect[0]['left'];
     edit_modal.style.top = el_top + 5 + "px";
@@ -309,13 +378,20 @@ async function get_other_posts() {
             page_num += 1
             let left_html = `<div class="image_wrap_box">`;
             for (let i = 0; i < response.posts.length; i++) {
+                if (response.posts[i].liked) {
+                    heart_icon = 'bi-heart-fill'
+                    color_class = 'img_heart_icon_red'
+                } else {
+                    heart_icon = 'bi-heart'
+                    color_class = 'img_heart_icon'
+                }
                 let class_idx = parseInt(i % 4)
                 left_html += `<div class="m_l_img${class_idx}_box">
                 <div class="m_l_img${class_idx}_header_box">
-                    <i class="bi bi-heart img_heart_icon" id = "img_heart_icon_${response.posts[i].id}"></i>
+                    <i class="bi `+ heart_icon + ` "` + color_class + ` img_heart_icon_${response.posts[i].id}" onclick="like('${response.my_post.id}')"></i>
                     <div class="m_l_img${class_idx}_back">
-                        <div class="m_l_img${class_idx}_header">${response.posts[i].author}</div>
-                        <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="edit_modal_in('${response.posts[i].id}', '${response.posts[i].author_id}')"></i>
+                        <div class="m_l_img${class_idx}_header">${response.posts[i].author.nickname}</div>
+                        <i class="bi bi-three-dots img_three_dots" id="img_three-dots_${response.posts[i].id}" onclick="img_edit_modal_in('${response.posts[i].id}', '${response.posts[i].author.id}')"></i>
                     </div>
                 </div>
                 <a href="../../Ko+jin_test/detail.html?post_id=${response.posts[i].id}">
@@ -330,7 +406,11 @@ async function get_other_posts() {
 }
 
 mb_left.addEventListener('scroll', get_other_posts)
-
+// 로그아웃 함수
+function logout() {
+    localStorage.clear();
+    location.replace('/user/sign_in.html')
+}
 // token을 리프레시하는 함수
 async function refresh() {
     url = new URL(BASE_URL + '/joo_test/api/token/refresh/');
@@ -344,18 +424,67 @@ async function refresh() {
         },
         body: JSON.stringify({ 'refresh': localStorage.getItem('refresh') })
     })
-    let data = await result.json()
+    let response = await result.json()
     if (result.status == 200) {
-        for (const key in data) {
-            localStorage.setItem(key, data[key])
+        for (const key in response) {
+            localStorage.setItem(key, response[key])
         }
     } else {
         logout()
     }
 }
-let interval_time = parseInt(60 * 4.5 * 1000)
+let interval_time = parseInt(60 * 1000 * 4.5)
 let refresh_interval = setInterval(() => {
     if (localStorage.getItem('access')) {
         refresh();
     }
 }, interval_time);
+
+
+// 팔로우 기능
+async function follow(target_user_id) {
+    url = new URL(BASE_URL + '/user/follow/' + target_user_id);
+    const result = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            "Access-Control-Allow-Origin": "*",
+        },
+    })
+    let response = await result.json()
+    alert(response.message)
+    location.reload()
+}
+function to_mypage() {
+    location.href = '/profile/mypage.html'
+}
+
+async function like(post_id) {
+    url = new URL(BASE_URL + '/won_test/like/' + post_id);
+    const result = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            "Access-Control-Allow-Origin": "*",
+        },
+    })
+    if (result.status === 200) {
+        const img_heart_icon = document.querySelectorAll('.img_heart_icon_' + post_id);
+        for (let i = 0; i < img_heart_icon.length; i++) {
+            if (img_heart_icon[i].classList.contains('bi-heart')) {
+                img_heart_icon[i].classList.replace('bi-heart', 'bi-heart-fill')
+                img_heart_icon[i].style.color = 'red';
+            } else {
+                img_heart_icon[i].classList.replace('bi-heart-fill', 'bi-heart')
+                img_heart_icon[i].style.color = 'white';
+            }
+        }
+
+    }
+}
