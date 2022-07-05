@@ -6,18 +6,16 @@
 
 body,
 html {
+    height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
 
 .main_header {
-    background-image: url('images/friend.png');
-    background-size: cover;
-    background-position: center;
-    width: 400px;
-    height: 280px;
-    left: 38%;
-    position: relative;
+    height: 300px;
+    left: 40%;
+    position: absolute;
     z-index: 1;
 }
 
@@ -25,22 +23,26 @@ html {
     position: absolute;
     top: 180px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #77A0DD;
     display: flex;
 }
 
-.mb_main_post_box {
-    display: flex;
-    width: 100%;
+.mb_left {
+    padding: 7.3rem 0 0 7rem;
+    width: 60%;
+    overflow: scroll;
 }
 
-.mb_left {
-    margin-left: 7rem;
+.mb_left::-webkit-scrollbar {
+    display: none;
+}
+
+.image_wrap_box {
+    width: 100%;
+    height: 1100px;
     flex-wrap: wrap;
-    width: 65%;
-    gap: 5% 20%;
-    margin-top: 7rem;
+    gap: 7% 20%;
     display: flex;
     justify-content: start;
     align-content: flex-start;
@@ -63,10 +65,14 @@ html {
     display: flex;
 }
 
-.img_three-dots {
+.img_three_dots {
     margin-left: 5px;
     position: relative;
     top: 3px
+}
+
+.img_three_dots:hover {
+    cursor: pointer;
 }
 
 .m_l_img0 {
@@ -234,7 +240,7 @@ html {
 
 
 .mb_r_profile_main {
-    width: 560px;
+    width: 500px;
     height: 660px;
     border-radius: 10px;
 }
@@ -603,5 +609,10 @@ html {
 }
 
 .share_button:hover {
+    cursor: pointer;
+}
+
+.edit_modal_red {
+    color: red;
     cursor: pointer;
 }
