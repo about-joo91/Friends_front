@@ -33,6 +33,7 @@ body{
     border: 1px solid black;
     margin : 10.4rem auto 0 auto;
     background-color: white;
+    border-radius: 15px;
 }
 .join_body{
     width: 131.6rem;

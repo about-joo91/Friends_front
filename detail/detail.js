@@ -150,6 +150,7 @@ window.onload =
                 }
                 else {
                     alert("세션이 만료 되었습니다!")
+                    location.replace('/user/sign_page.html')
                 }
             }
             db_comment_box.innerHTML = tmp_comment
@@ -160,6 +161,7 @@ window.onload =
         }
         else {
             alert("세션이 만료 되었습니다.")
+            location.replace('/user/sign_page.html')
         }
     }
 

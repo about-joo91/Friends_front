@@ -20,7 +20,7 @@ const csrftoken = get_cookie('csrftoken')
 async function sign_in() {
     const username = document.getElementById('inputUsername').value;
     const password = document.getElementById('inputPassword').value;
-    if (username && password) {
+    if (username.length > 3 && password.length > 3) {
         const result = await fetch(BASE_URL + '/user/login/', {
             method: "POST",
             mode: 'cors',
@@ -46,11 +46,26 @@ async function sign_in() {
 
         }
         else {
-
             alert("아이디나 비밀번호를 확인 해 주세요!!")
         }
     } else {
-        alert("아이디와 패스워드는 8글자가 넘어야 합니다.")
+        alert("아이디와 패스워드는 4글자가 넘어야 합니다.")
+    }
+}
+// 엔터 시 sign_up, sign_in 작동
+inputPassword.onkeyup = function (event) { 
+    if (event.keyCode == 13){
+    	sign_in();
+    }
+}
+new_Password.onkeyup = function (event) { 
+    if (event.keyCode == 13){
+    	sign_up();
+    }
+}
+new_Nickname.onkeyup = function (event) { 
+    if (event.keyCode == 13){
+    	sign_up();
     }
 }
 
@@ -59,7 +74,7 @@ async function sign_up() {
     const userPassword = document.getElementById('new_Password').value;
     const userNickname = document.getElementById('new_Nickname').value;
 
-    if (username.length > 4) {
+    if (username.length > 3) {
         const result = await fetch(BASE_URL + '/user/sign_up/', {
             method: 'POST',
             mode: 'cors',
