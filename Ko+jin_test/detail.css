@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+* {
+    font-family: 'Gamja Flower', cursive;
+    ;
+}
+
 body{
     margin: 0;
 }
@@ -52,7 +59,7 @@ body{
     width: 98.9%;
     height: 280px;
     padding-top: 30px;
-    padding-left: 10px;
+    padding-left: 30px;
     text-align: left;
     font-size: 20px;
 }
@@ -82,6 +89,19 @@ body{
     align-items: center;
     color: violet;
 }
+.edit_comment{
+    resize: none;
+    width: 100%;
+}
+.comment_and_date{
+    display: flex;
+    align-items: center;
+}
+.comment_created_date{
+    margin-left: 10px;
+    color: violet;
+    font-size: 13px;
+}
 .db_comment_delete{
     display: flex;
     width: 10%;
@@ -92,15 +112,15 @@ body{
 .fa-bookmark  {
     cursor: pointer;
     position: absolute;
-    top: 40.5%;
-    left: 75%;
+    top: 37.5%;
+    left: 84%;
 }
 
 .fa-heart{
     cursor: pointer;
     position: absolute;
-    top: 40.5%;
-    left: 77%;
+    top: 37.5%;
+    left: 81%;
 }
 .db_input {
     width: 100%;
@@ -119,7 +139,7 @@ body{
 }
 .db_button {
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     top: 91.7%;
     left: 84%;
