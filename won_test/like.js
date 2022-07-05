@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000"
+const BASE_URL = "http://127.0.0.1:8000"
 
 
 let liked = false
@@ -24,7 +24,7 @@ const csrftoken = get_cookie('csrftoken')
 
 
 async function postLike(post_id){
-    const response = await fetch(`${backend_base_url}/won_test/like/${post_id}`,{
+    const response = await fetch(`${BASE_URL}/won_test/like/${post_id}`,{
         headers:{
             'Authorization' : 'Bearer '+ localStorage.getItem("access"),
             "Access-Control-Allow-Origin": "*",
