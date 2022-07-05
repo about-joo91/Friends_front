@@ -35,7 +35,7 @@
                 <div class="mb_container"></div>
                 <label class="mb_file_select" for="image_input">1. 파 일 선 택</label>
                 <input class="mb_file_input" id="image_input" type="file" accept='image/*' onchange="privew(event);" />
-                <select class="mb_char_choice">
+                <select id="choice_char" class="mb_char_choice">
                     <option>2. 캐 릭 터 선택</option>
                     <option>엘사</option>
                     <option>라이언</option>
@@ -43,8 +43,8 @@
                 </select>
                 <button class="mb_title_button" id="title_button"><span>3. 제 목 입 력 </span> </button>
                 <button class="mb_content_button" id="content_button"><span>4. 내 용 입 력 </span> </button>
-                <button class="mb_up_button" onclick="post_upload()" id="upload_button"><span>5. 업 로 드</span></button>
-                <button class="mb_back_button" id="clear"><span>취 소</span></button>
+                <button class="mb_up_button" onclick="preview()" id="upload_button"><span>5. 결 과 확 인</span></button>
+                <button class="mb_back_button" onclick="post_upload()" id="clear"><span>6. 업 로 드</span></button>
             </div>
             <div class="modal_line">
                 <div class="ml_modal" id="event_div">

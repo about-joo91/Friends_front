@@ -287,18 +287,57 @@ modal_main_wrapper.addEventListener('click', function (e) {
         body.style.overflow = "auto";
     }
 })
+
+let img_url =""
+
+async function preview() {
+    const selectFile = document.getElementById("image_input").files[0];
+    const choice = document.getElementById("choice_char").value;
+    let formData = new FormData();
+    formData.append('postimg', selectFile);
+    formData.append('choice',choice)
+    if (selectFile) {
+        const token = localStorage.getItem('access')
+        const result = await fetch(BASE_URL + '/joo_test/priview/', {
+            method: 'POST',
+            cache: 'no-cache',
+            mode: 'cors',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${token}`,
+                'X-CSRFToken': csrftoken,
+            },
+            body: formData,
+        })
+        let res = await result.json()
+        img_url = res
+        let event = document.getElementById("event_div")
+        event.src = `https://bucketfriends.s3.ap-northeast-2.amazonaws.com/${res}`;
+
+        if (result.ok) {
+            alert("결과 출력 중입니다 조금만 기다려주세요!")
+        }
+        else {
+            alert(res['messge'])
+        }
+
+    } else {
+        alert("파일을 선택해주세요!")
+    }
+}
+
+
+
 // 업로드 함수 
 async function post_upload() {
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
-    const selectFile = document.getElementById("image_input").files[0];
     let formData = new FormData();
-    formData.append('postimg', selectFile);
+    formData.append('postimg', img_url);
     formData.append('title', title);
     formData.append('content', content);
 
-
-    if (title && content && selectFile) {
+    if (title && content) {
         const token = localStorage.getItem('access')
         const result = await fetch(BASE_URL + '/joo_test/', {
             method: 'POST',
@@ -311,17 +350,12 @@ async function post_upload() {
             },
             body: formData,
         })
-        let res = await result.json()
-        let event = document.getElementById("event_div")
-        event.innerHTML = `<img src="https://bucketfriends.s3.ap-northeast-2.amazonaws.com/${res}"/>`;
-
         if (result.ok) {
             alert("업로드 성공입니다!")
         }
         else {
             alert(res['messge'])
         }
-
     } else {
         alert("제목과 내용을 입력해주세요.")
     }
