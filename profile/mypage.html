@@ -10,10 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b57dd44d80.js" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" type="text/css" href = "mypage.css">
+    <link rel="stylesheet" type="text/css" href = "/profile/mypage.css">
     
-
-
     <title>Mypage</title>
 
 
@@ -29,57 +27,18 @@
         <i class="fa-solid fa-circle-plus" id="modal_btn"></i>
     </button>
     <div class="modal hidden">
-      <div class="modal_overlay"></div>
-      <div class="modal_content">
-        <a href="/main/main.html" class="mc_link">
-            <div class="mc_text"><i class="fa-solid fa-house-chimney"></i>  홈 화면으로</div></a>
-        <div class="mc_link">
-            <div onclick="upload_modal_in()" class="mc_text"><i class="fa-solid fa-arrow-up-from-bracket"></i>  이미지 업로드</div></a>
+        <div class="modal_overlay"></div>
+        <div class="modal_content">
+            <a href="/main/main.html" class="mc_link">
+                <div class="mc_text"><i class="fa-solid fa-house-chimney"></i> 홈 화면으로</div></a>
         <a href="?page_type=saved" class="mc_link">
             <div class="mc_text"><i class="fa-solid fa-bookmark"></i>  저장된 게시물</div></a>
         <a href="?page_type=liked" class="mc_link">
             <div class="mc_text"><i class="fa-solid fa-heart"></i>  좋아한 게시물</div></a>
         <div onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i>  로그아웃</div>
-      </div>
-    </div>
-
-
-    <!-- 이미지 업로드 모달  -->
-    <div class="modal_main_wrapper">
-        <div class="mc_container">
-            <div id="preview" class="mc_modal">
-                <div>
-                    <img id="out_put" src="/jintest//upload.jpg">
-                </div>
-            </div>
-            <div class="modal_buttonbox">
-                <div class="mb_container"></div>
-                <label class="mb_file_select" for="image_input">1. 파 일 선 택</label>
-                <input class="mb_file_input" id="image_input" type="file" accept='image/*' onchange="privew(event);" >
-                <select class="mb_char_choice">
-                    <option>2. 캐 릭 터 선택</option>
-                    <option>엘사</option>
-                    <option>라이언</option>
-                    <option>주맨</option>
-                </select>
-                <button class="mb_title_button" id="title_button"><span>3. 제 목 입 력 </span> </button>
-                <button class="mb_content_button" id="content_button"><span>4. 내 용 입 력 </span> </button>
-                <button class="mb_up_button" onclick="post_upload()" id="upload_button"><span>5. 업 로 드</span></button>
-                <button class="mb_back_button" id="clear"><span>취 소</span></button>
-            </div>
-            <div class="modal_line">
-                <div class="ml_modal" id="event_div">
-                    <img src='/jintest/event.jpg' />
-                    <div>
-                        <input class="ml_title" type="text" id="title" placeholder="제목을 입력해주세요.">
-                        <textarea class="ml_content" id="content" placeholder="내용을 입력해주세요."></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
 </body>
-<script src="mypage.js"></script>
+<script src="/profile/mypage.js"></script>
 </html>

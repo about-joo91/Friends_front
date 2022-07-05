@@ -465,7 +465,7 @@ html {
     background-color: white;
     border: solid black;
     position: absolute;
-    top: 30%;
+    top: 32%;
     padding-top: 15px;
     width: 200px;
     height: 38px;
@@ -475,7 +475,7 @@ html {
     align-items: center;
     font-size: 20px;
     font-weight: bold;
-    left: 44.5%;
+    left: 43.5%;
     color: black;
 }
 
@@ -484,16 +484,16 @@ html {
     border: solid black !important;
     width: 200px;
     height: 60px !important;
-    top: 54%;
+    top: 56%;
     background-color: white !important;
-    left: 44%;
+    left: 43.5%;
     color: black;
 }
 
 .mb_back_button {
     border: solid black !important;
     position: absolute;
-    top: 61%;
+    top: 63%;
     left: 49%;
     width: 200px;
     height: 60px !important;
@@ -516,7 +516,7 @@ html {
 }
 
 .ml_modal {
-    margin-bottom: 80px;
+    margin-bottom: 140px;
     background-color: #FFFFFF;
     background-size: 500px;
     background-position: center;
@@ -564,8 +564,8 @@ html {
     border: none;
     font-weight: bold;
     border-radius: 10px;
-    top: 37%;
-    left: 49%;
+    top: 39%;
+    left: 48.8%;
     color: black;
 }
 
@@ -595,7 +595,7 @@ html {
     font-size: 20px;
     font-weight: bold;
     border-radius: 10px;
-    top: 40%;
+    top: 42%;
     left: 43.5%;
     color: black;
 }
@@ -612,8 +612,8 @@ html {
     border: none;
     font-weight: bold;
     border-radius: 10px;
-    top: 47%;
-    left: 49%;
+    top: 49%;
+    left: 48.8%;
     color: black;
 }
 
