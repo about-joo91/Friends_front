@@ -116,12 +116,14 @@ body{
     resize: none;
     border-radius: 15px;
     padding: 10px 5px 5px 5px;
+    border : 1px solid rgb(230,229,230)
 }
 .edit_comment_button{
     outline: none;
     border: none;
     background-color: white;
     width: 20%;
+    color: violet;
 }
 .comment_and_date{
     display: flex;
