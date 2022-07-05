@@ -115,8 +115,6 @@ window.onload =
             let tmp_comment = ``
             // post에 대한 제목, 내용, 이미지를 가져오는 코드
             post = res.post[0]
-            console.log(post.bookmarked)
-            console.log(post.liked)
             db_title.innerHTML = post.title
             db_content.innerHTML += post.content
             dc_event_img.innerHTML = `<img src="${post.img_url}">`
@@ -132,6 +130,7 @@ window.onload =
             // 댓글을 불러오는 코드
             for (let i = 0; i < res.comment.length; i++) {
                 comment = res.comment[i]
+                console.log(comment)
                 if (parseJwt(localStorage.getItem("access")).user_id == comment.user) {
                     tmp_comment +=
                         `<div class="db_comment">
@@ -139,7 +138,7 @@ window.onload =
                 <div class="comment_and_date">
                 ${comment.author}님의 댓글 <span class="comment_created_date">${comment.created_date}</span><br>
                 </div>
-                ${comment.comment} 
+                ${comment.comment}
                 </div>
                 <div class="db_comment_edit" onclick = "edit_click(${comment.id})">
                 수정
@@ -150,10 +149,7 @@ window.onload =
             </div>`
                 }
                 else {
-                    tmp_comment +=
-                        `<div class="db_comment">
-                ${comment.author}님의 댓글 :<br> ${comment.comment} user_id = ${comment.user}
-            </div>`
+                    alert("세션이 만료 되었습니다!")
                 }
             }
             db_comment_box.innerHTML = tmp_comment

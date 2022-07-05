@@ -8,8 +8,19 @@
 body{
     margin: 0;
 }
+/* .bear{
+    position: relative;
+    top: 0;
+    width: 300px;
+    height: 190px;
+    background-image: url(friend.png);
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    z-index: 3;
+} */
 .detail_container{
-
+    background-color: rgb(221, 214, 203);
     width: 100%;
     height: 100vh;
     display: flex;
@@ -18,18 +29,20 @@ body{
 }
 .dc_box{
     display: flex;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid rgb(235,235,235);
+    border-radius: 15px;
     background-color: white;
-    width: 1500px;
-    height: 900px;
+    width: 1100px;
+    height: 600px;
 }
 
 .dc_event_img{
     background-color: black;
-    width:  800px;
+    width: 800px;
     height: 100%;
     overflow: hidden;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .dc_event_img img{
@@ -50,13 +63,13 @@ body{
     text-align: center;
     width: 100%;
     height: 50px;
-    font-size: 20px;
-    background-color: whitesmoke;
+    font-size: 21px;
+    font-weight: 700;
 }
 
 .db_content {
-    border-top: 1px solid gray;
-    width: 98.9%;
+    border-top: 1px solid rgb(235,235,235);
+    width: 95.7%;
     height: 280px;
     padding-top: 30px;
     padding-left: 30px;
@@ -65,13 +78,15 @@ body{
 }
 
 .db_comment_box {
-    border-top: 1px solid gray;
+    border-top: 1px solid rgb(235,235,235);
     position: relative;
     padding-left: 30px;
     width: 95.4%;
     height: 450px;
     overflow-y: scroll;
-
+}
+.db_comment_box::-webkit-scrollbar{
+    display: none;
 }
 .db_comment {
     font-size: 18px;
@@ -80,7 +95,7 @@ body{
     margin-bottom: 30px;
 }
 .db_comment_comment{
-    width: 80%;
+    width: 76%;
 }
 .db_comment_edit{
     display: flex;
@@ -124,15 +139,15 @@ body{
 .fa-bookmark  {
     cursor: pointer;
     position: absolute;
-    top: 37.5%;
-    left: 84%;
+    top: 20.5%;
+    left: 76.7%;
 }
 
 .fa-heart{
     cursor: pointer;
     position: absolute;
-    top: 37.5%;
-    left: 81%;
+    top: 20.5%;
+    left: 75%;
 }
 .db_input {
     width: 100%;
@@ -143,24 +158,25 @@ body{
 .db_input input{
     border: none;
     outline: none;
-    width: 96.8%;
+    width: 94.8%;
     height: 88%;
     padding-top: 4px;
     padding-left: 20px;
     font-size: 18px;
+    border-bottom-right-radius: 15px;
 }
 .db_button {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
-    top: 91.7%;
-    left: 84%;
+    top: 78.5%;
+    left: 75%;
     outline: none;
     border: none;
     background-color: white;
     position: absolute;
     width: 50px;
-    height: 50px;
+    height: 20px;
 }
 #fill_bookmark{
     display: none;
