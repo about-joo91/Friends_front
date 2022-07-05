@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+* {
+    font-family: 'Gamja Flower', cursive;
+    ;
+}
+
 body{
     margin: 0;
 }
@@ -52,7 +59,7 @@ body{
     width: 98.9%;
     height: 280px;
     padding-top: 30px;
-    padding-left: 10px;
+    padding-left: 30px;
     text-align: left;
     font-size: 20px;
 }
@@ -81,6 +88,15 @@ body{
     justify-content: center;
     align-items: center;
     color: violet;
+}
+.comment_and_date{
+    display: flex;
+    align-items: center;
+}
+.comment_created_date{
+    margin-left: 10px;
+    color: violet;
+    font-size: 13px;
 }
 .db_comment_delete{
     display: flex;

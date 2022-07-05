@@ -89,7 +89,10 @@ async function get_comment() {
                 tmp_comment += 
             `<div class="db_comment">
                 <div class="db_comment_comment" id="db_comment_comment_${comment.id}">
-                ${comment.author}님의 댓글 :(몇시에 달았느냐... ${comment.created_date})<br> ${comment.comment} 
+                <div class="comment_and_date">
+                ${comment.author}님의 댓글 <span class="comment_created_date">${comment.created_date}</span><br>
+                </div>
+                ${comment.comment} 
                 </div>
                 <div class="db_comment_edit" onclick = "edit_click(${comment.id})">
                 수정
@@ -156,7 +159,7 @@ async function make_comment(post_id) {
 function edit_click(comment_id){
     edit_html = `
     <div class="edit_comment"> 
-        <textarea class="edit_comment" id="edit_comment_comment_${comment_id}" cols="50" rows="3"></textarea>
+        <textarea class="edit_comment" id="edit_comment_comment_${comment_id}" cols="50" rows="3" placeholder="수정할 댓글을 입력해주세요"></textarea>
         <button class="edit_comment_button" id="edit_comment_btn" onclick="edit_comment_fun(${comment_id})">댓글 수정</button>
     </div>
     `
