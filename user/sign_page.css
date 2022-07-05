@@ -11,12 +11,28 @@ html {
     width: 172.8rem;
     margin: 0 auto;
 }
+body{
+    background-color: #77A0DD;
+    overflow: hidden;
+}
+.h_bear{
+    position: absolute;
+    top: 64px;
+    left: 42.65%;
+    width: 300px;
+    height: 190px;
+    background-image: url(friend.png);
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    z-index: 3;
+}
 .join_header{
     width: 141.3rem;
     height: 16.1rem;
     border: 1px solid black;
     margin : 10.4rem auto 0 auto;
-    background-color: #D9D9D9;
+    background-color: white;
 }
 .join_body{
     width: 131.6rem;
@@ -37,7 +53,7 @@ html {
 .jb_si_title{
     width: 100%;
     height: 4.1rem;
-    font-size: 34px;
+    font-size: 50px;
     display: flex;
     justify-content: center;
 }
@@ -46,10 +62,13 @@ html {
     height: 10.6rem;
 }
 .jb_si_un_text{
+    position: absolute;
+    top: 45%;
+    left: 15.3%;
     width: 100%;
     height: 3.5rem;
     margin-left: 1rem;
-    font-size: 20px;
+    font-size: 30px;
     padding-left: 2rem;
 }
 .jb_si_un_inputusername{
@@ -57,8 +76,8 @@ html {
     padding-left: 2rem;
     height: 7.1rem;
     border-radius: 20px;
-    background-color: #D9D9D9;
-    font-size: 20px;
+    background-color: white;
+    font-size: 24px;
 }
 .jb_si_password{
     width: 52.1rem;
@@ -68,7 +87,10 @@ html {
     width: 12.8rem;
     height: 2.4rem;
     margin-left: 1rem;
-    font-size: 20px;
+    font-size: 30px;
+    position: absolute;
+    top: 64%;
+    left: 15.3%;
     padding-left: 2rem;
     margin-bottom: 1rem;
 }
@@ -77,8 +99,8 @@ html {
     padding-left: 2rem;
     height: 7.1rem;
     border-radius: 20px;
-    background-color: #D9D9D9;
-    font-size: 20px;
+    background-color: white;
+    font-size: 24px;
 }
 .jb_si_button{
     width: 100%;
@@ -91,7 +113,8 @@ html {
     height: 4.5rem;
     border-radius: 30px;
     font-size: 20px;
-    background-color: #D9D9D9;
+    background-color: white;
+    cursor:pointer;
 }
 /* 중간에 세로라인 */
 .empty_box{
@@ -120,7 +143,7 @@ html {
 .jb_su_title{
     width: 100%;
     height: 4.1rem;
-    font-size: 34px;
+    font-size: 50px;
     display: flex;
     justify-content: center;
 }
@@ -134,15 +157,15 @@ html {
     height: 3.5rem;
     margin-left: 1rem;
     padding-left: 2rem;
-    font-size: 20px;
+    font-size: 28px;
 }
 .jb_su_un_new_username{
     width: 50.1rem;
     padding-left: 2rem;
     height: 7.1rem;
     border-radius: 20px;
-    background-color: #D9D9D9;
-    font-size: 20px;
+    background-color:white;
+    font-size: 24px;
 }
 .jb_su_password{
     width: 52.1rem;
@@ -152,7 +175,7 @@ html {
     width: 12.8rem;
     height: 2.4rem;
     margin-left: 1rem;
-    font-size: 20px;
+    font-size: 28px;
     padding-left: 2rem;
     margin-bottom: 1rem;
 }
@@ -161,8 +184,8 @@ html {
     padding-left: 2rem;
     height: 7.1rem;
     border-radius: 20px;
-    background-color: #D9D9D9;
-    font-size: 20px;
+    background-color: white;
+    font-size: 24px;
 }
 .jb_su_nickname{
     width: 52.1rem;
@@ -172,7 +195,7 @@ html {
     width: 100%;
     height: 3.5rem;
     margin-left: 1rem;
-    font-size: 20px;
+    font-size: 28px;
     padding-left: 2rem;
 }
 .jb_su_un_new_nickname{
@@ -180,8 +203,8 @@ html {
     padding-left: 2rem;
     height: 7.1rem;
     border-radius: 20px;
-    background-color: #D9D9D9;
-    font-size: 20px;
+    background-color: white;
+    font-size: 24px;
 }
 .jb_su_button{
     width: 100%;
@@ -194,5 +217,6 @@ html {
     height: 4.5rem;
     border-radius: 30px;
     font-size: 20px;
-    background-color: #D9D9D9;
+    background-color: white;
+    cursor: pointer;
 }
