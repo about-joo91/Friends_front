@@ -28,7 +28,7 @@ let bookmark_fill = document.getElementById("fill_bookmark")
 
 bookmark_empty.addEventListener('click',(async function(){
     const token = localStorage.getItem('access')
-    const result = await fetch(BASE_URL + '/bookmark_test/' + post_id,{
+    const result = await fetch(BASE_URL + '/won_test/bookmark/' + post_id,{
         method:'POST',
         mode: 'cors',
         headers:{
@@ -54,7 +54,7 @@ bookmark_empty.addEventListener('click',(async function(){
 
 bookmark_fill.addEventListener('click',(async function(){
     const token = localStorage.getItem('access')
-    const result = await fetch(BASE_URL + '/bookmark_test/' + post_id,{
+    const result = await fetch(BASE_URL + '/won_test/bookmark/' + post_id,{
         method:'DELETE',
         mode: 'cors',
         headers:{

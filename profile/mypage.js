@@ -10,14 +10,17 @@ modal_overlay.addEventListener("click", () => {
     modal.classList.add("hidden");
 });
 
+
 const BASE_URL = 'http://127.0.0.1:8000';
 const user_id = 5;
 
 const urlParams = new URLSearchParams(window.location.search);
 const post_type = urlParams.get('page_type');
-console.log(post_type)
-if (post_type == 'liked'){
+
+if (post_type === 'liked'){
     URL = BASE_URL + '/won_test/likedpage/' + user_id
+}else if (post_type === "saved"){
+    URL = BASE_URL + "/bookmark_test/"
 }else{
     URL = BASE_URL + '/won_test/mypage/' + user_id
 }
@@ -27,7 +30,7 @@ const myimg_list = document.querySelector('.myimg_list');
 
 window.onload = async function(){
     if (!localStorage.hasOwnProperty('access')) {
-        location.replace('/Kotest/sign_page.html')
+        location.replace('/user/sign_page.html')
     }
 
     token = localStorage.getItem('access');
@@ -58,7 +61,12 @@ window.onload = async function(){
         }
         myimg_list.innerHTML =  myposts_html;
     } else {
-        location.replace('/Kotest/sign_page.html')
+        location.replace('/user/sign_page.html')
     }
 }
 
+
+function logout() { 
+    localStorage.clear(); 
+    location.replace('/user/sign_page.html') 
+}

@@ -43,6 +43,7 @@ async function sign_in() {
                 localStorage.setItem(key, response[key])
             }
             location.href = '../main/main.html'
+
         }
         else {
 
