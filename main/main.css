@@ -523,7 +523,10 @@ html {
     width: 500px;
     height: 500px;
 }
-
+.ml_modal img{
+    width: 500px;
+    height: 500px;
+}
 .ml_title {
     border: none;
     outline: none;

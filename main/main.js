@@ -352,6 +352,7 @@ async function post_upload() {
         })
         if (result.ok) {
             alert("업로드 성공입니다!")
+            window.location.reload()
         }
         else {
             alert(res['messge'])
