@@ -3,7 +3,7 @@ const backend_base_url = "http://127.0.0.1:8000"
 
 let liked = false
 const urlParams = new URLSearchParams(window.location.pathname);
-const post_id = 1
+const post_id = 14
 
 
 function get_cookie(name) {
@@ -55,3 +55,5 @@ async function like(){
     const response = postLike(post_id)
     console.log(response)
 }
+
+

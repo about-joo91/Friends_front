@@ -13,23 +13,30 @@ modal_overlay.addEventListener("click", () => {
 const BASE_URL = 'http://127.0.0.1:8000';
 const user_id = 5;
 
+const urlParams = new URLSearchParams(window.location.search);
+const post_type = urlParams.get('page_type');
+console.log(post_type)
+if (post_type == 'liked'){
+    URL = BASE_URL + '/won_test/likedpage/' + user_id
+}else{
+    URL = BASE_URL + '/won_test/mypage/' + user_id
+}
+
 
 const myimg_list = document.querySelector('.myimg_list');
+
 window.onload = async function(){
-    console.log("ggg")
     if (!localStorage.hasOwnProperty('access')) {
         location.replace('/Kotest/sign_page.html')
     }
 
     token = localStorage.getItem('access');
-    const myposts = await fetch(BASE_URL + '/won_test/mypage/' + user_id,{
+    const myposts = await fetch(URL,{
         method:'GET',
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${token}`,
         }
-        
-
     })
     let response = await myposts.json()
   
@@ -55,23 +62,3 @@ window.onload = async function(){
     }
 }
 
-
-// window.onscroll = function() {
-//     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-//         // $.ajax({
-//         //     url: "{% url 'ajax_method' %}",
-//         //     type: "GET",
-//         //     datatype: 'json',
-//         //     success: function(){
-//         //         let test1 = document.getElementById('#scroll')
-
-//         //     }
-
-
-//         // }
-
-//         )
-//     }
-
-
-// }
