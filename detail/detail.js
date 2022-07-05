@@ -1,6 +1,6 @@
 const BASE_URL = 'http://127.0.0.1:8000';
 
-
+// 쿠키 할당
 function get_cookie(name) {
     let cookie_value = null;
     if (document.cookie && document.cookie !== '') {

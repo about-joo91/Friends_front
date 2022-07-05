@@ -6,11 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b57dd44d80.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="main.css">
     <title>Document</title>
 </head>
 
 <body>
+    <div class="header_btn_box">
+        <i class="fa-solid fa-handshake-simple hbb_recommend_follow" onclick="rec_follower_modal_in()"></i>
+        <div class="hbb_cur_user" onclick="to_mypage()"></div>
+    </div>
+    <!-- 추천 팔로워 모달 -->
+    <div class="rec_follower_modal_wrapper">
+
+    </div>
     <!-- 수정 모달 -->
     <div id="edit_modal_wrapper" class="edit_modal_wrapper"></div>
     <!-- 메인 모달 -->
@@ -18,7 +28,7 @@
         <div class="mc_container">
             <div id="preview" class="mc_modal">
                 <div>
-                    <img id="out_put" src="/jintest//upload.jpg">
+                    <img id="out_put" src="/detail/event.jpg">
                 </div>
             </div>
             <div class="modal_buttonbox">
@@ -38,7 +48,7 @@
             </div>
             <div class="modal_line">
                 <div class="ml_modal" id="event_div">
-                    <img src='/jintest/event.jpg' />
+                    <img src='/detail/event.jpg' />
                     <div>
                         <input class="ml_title" type="text" id="title" placeholder="제목을 입력해주세요.">
                         <textarea class="ml_content" id="content" placeholder="내용을 입력해주세요."></textarea>
@@ -69,7 +79,9 @@
         </div>
     </div>
 
-    <img class="main_header" src="images/friend.png">
+    <div>
+        <div class="main_header"></div>
+    </div>
 
     <div id="main_body">
         <div class="mb_plus_btn" onclick="upload_modal_in()">+</div>
