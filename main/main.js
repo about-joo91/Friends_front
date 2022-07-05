@@ -275,6 +275,7 @@ email_modal_wrapper.addEventListener('click', function (e) {
 // 업로드 모달 in
 const modal_main_wrapper = document.querySelector('.modal_main_wrapper')
 function upload_modal_in() {
+    console.log("Dddd")
     modal_main_wrapper.style.display = 'flex';
     body.style.overflow = "hidden";
 }
