@@ -7,10 +7,12 @@
 
 body{
     margin: 0;
+    overflow: hidden;
 }
-/* .bear{
-    position: relative;
+.h_bear{
+    position: absolute;
     top: 0;
+    left: 42.65%;
     width: 300px;
     height: 190px;
     background-image: url(friend.png);
@@ -18,7 +20,7 @@ body{
     background-position: center;
     margin: auto;
     z-index: 3;
-} */
+}
 .detail_container{
     background-color: rgb(221, 214, 203);
     width: 100%;
@@ -26,6 +28,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 50px;
 }
 .dc_box{
     display: flex;
@@ -139,14 +142,14 @@ body{
 .fa-bookmark  {
     cursor: pointer;
     position: absolute;
-    top: 20.5%;
+    top: 25.5%;
     left: 76.7%;
 }
 
 .fa-heart{
     cursor: pointer;
     position: absolute;
-    top: 20.5%;
+    top: 25.5%;
     left: 75%;
 }
 .db_input {
@@ -169,7 +172,7 @@ body{
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
-    top: 78.5%;
+    top: 83.5%;
     left: 75%;
     outline: none;
     border: none;
